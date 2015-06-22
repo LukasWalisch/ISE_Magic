@@ -11,7 +11,7 @@ Hallo1
 	<?php
         if ($_POST["username"] != "admin" && $_POST["password"] != "admin")
         {
-           include("Fail.html");
+           include("error.html");
             return;
         }
 
