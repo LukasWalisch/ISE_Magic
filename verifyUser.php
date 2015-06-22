@@ -18,7 +18,9 @@ $postPassword = $_POST["password"];
 
 $query = "SELECT * FROM User WHERE username = '$postUser' AND password = '$postPassword'";
 
-if(mysqli_query($conn, $query))
+$result = mysqli_query($conn, $query);
+
+if(mysqli_num_rows($result) == 1)
 {
     header("Location: navigation.php");
     die();
@@ -27,6 +29,12 @@ if(mysqli_query($conn, $query))
 else
 {
     header("Location: index.html");
+    ?>
+
+    <script>alert("success!!");</script>
+
+    <?php
+
     die();
 }
 
