@@ -13,7 +13,7 @@
 		<input type="radio" name="cardType" value="Land">Land
 		<br/>
 	How many cardeffects does the card contain? (Static effects doesn´t count. See here for possible static effects:
-		<a href="Eigenschaften.html" target="_blank">Static effects</a>)
+		<a href="staticEffetcs.html" target="_blank">Static effects</a>)
 		<br/>
 		<select name="Number" size="1">
 			<option>0</option>
