@@ -2,18 +2,24 @@
     width: 960px;
 }
 
-
-
-.data-headerlogin
-
 .data-title {
     text-transform: uppercase; /* alles gross geschrieben */
     font-size: 26px;
+    position: absolute;
+    left: 0;
+}
+
+body {
+    padding-top: 70px;
 }
 
 .navbar {
     margin-bottom: 20px;
     background-color: #9acfea;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .data-nav-item {
@@ -29,6 +35,16 @@
     text-decoration: none;
     font-weight: 500;
     color: #000000;
+}
+
+#loginlogo {
+    position: absolute;
+    right: 20%;
+}
+
+#login {
+    position: static;
+    left: 0;
 }
 
 

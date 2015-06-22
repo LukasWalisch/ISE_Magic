@@ -12,6 +12,10 @@
     <!-- Custom styles for this template -->
     <link href="bootstrap-3.3.4-dist/main.css" rel="stylesheet">
 
+    <link rel="import" href="header.html">
+
+    <!--#include file="header.html"-->
+
 
         <title>Login</title>
 </head>
@@ -20,17 +24,19 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-6">
-            <img src="Bilder/magiclogo.png" alt="logo" width="50%" height="50%">
+        <div class="col-md-6 col-md-offset-1">
+            <img src="Bilder/loginlogo.png" alt="logo" id="loginlogo">
 
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-5" id="login">
             <form action="navigation.php" method="post" class="form-signin">
-                <h2 class="form-signin-heading">Anmelden</h2>
+                <h3 class="form-signin-heading">Anmelden</h3>
                 <input type="text" name="username" class="form-control" placeholder="E-Mail">
+                <br>
                 <input type="password" name="password" class="form-control" placeholder="Kennwort">
+                <br>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+                <button class="btn btn-primary" type="submit">Anmelden</button>
             </form>
         </div>
     </div>
