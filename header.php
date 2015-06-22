@@ -1,3 +1,10 @@
+<!--
+ * Created by PhpStorm.
+ * User: jenny
+ * Date: 22.06.15
+ * Time: 17:40
+ -->
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -59,6 +66,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap core JavaScript && jquery -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 </body>
 </html>
