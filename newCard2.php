@@ -6,8 +6,9 @@
 </head>
 <body>
 	<?php if ($_POST["cardType"] == NULL) return; ?>
-	<h1>New <?php echo $_POST["cardType"] ?> </h1>
-	<form action="persist.php" method="post">
+    include "MySQL_Connect.php";
+    <h1>New <?php echo $_POST["cardType"] ?> </h1>
+	<form action="persistCard.php" method="post">
 		Cardname: 		<input type="text" name="cardName"><br/>
 		Rarity: 		<select name="rarity" size="1"> 
 							<option>Common</option>
@@ -94,6 +95,9 @@
 				Life: <input type="text" name="life">
 				<?php
 			}
+
+
+
 			?>
 	</form>
 </body>
