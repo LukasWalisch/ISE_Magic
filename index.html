@@ -2,15 +2,16 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="SS14 IS Engineering (PR), Universitaet Wien">
+    <meta name="description" content="SS15 IS Engineering (PR), Universitaet Wien">
     <meta name="author" content="Team 13">
 
     <!-- Bootstrap core CSS -->
-    <link href="/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/bootstrap-3.3.4-dist/main.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
 
 
         <title>Login</title>
@@ -20,24 +21,28 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-6">
-            <img src="Bilder/magiclogo.png" alt="logo" width="50%" height="50%">
+        <div class="col-md-6 col-md-offset-1">
+            <img src="Bilder/loginlogo.png" alt="logo" id="loginlogo">
 
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-5" id="login">
             <form action="navigation.php" method="post" class="form-signin">
-                <h2 class="form-signin-heading">Anmelden</h2>
+                <h3 class="form-signin-heading">Anmelden</h3>
                 <input type="text" name="username" class="form-control" placeholder="E-Mail">
+                <br>
                 <input type="password" name="password" class="form-control" placeholder="Kennwort">
+                <br>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+                <button class="btn btn-primary" type="submit">Anmelden</button>
             </form>
         </div>
     </div>
 </div>
 
 
-
+<!-- Bootstrap core JavaScript && jquery -->
+<script src="js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
 

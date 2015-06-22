@@ -16,17 +16,18 @@
 </head>
 <body>
     <div class="container">
+
         <!-- SUCHFUNKTION -->
-        <div class="col-md-12">
+        <form action="newCard.php" method="post">
+            <h2>Karte Suchen</h2>
 
-        </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Karte suchen">
+            </div>
+            <button type="submit" class="btn btn-default">Suchen</button>
+        </form>
+
     </div>
-
-
-
-
-
-
 
 Hallo1
 
