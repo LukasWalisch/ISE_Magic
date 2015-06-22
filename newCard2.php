@@ -6,9 +6,9 @@
 </head>
 <body>
 	<?php if ($_POST["cardType"] == NULL) return; ?>
-    include "MySQL_Connect.php";
+    Test1
     <h1>New <?php echo $_POST["cardType"] ?> </h1>
-	<form action="persistCard.php" method="post">
+	<form action="PHP_Functions/persistCard.php" method="post">
 		Cardname: 		<input type="text" name="cardName"><br/>
 		Rarity: 		<select name="rarity" size="1"> 
 							<option>Common</option>
@@ -23,7 +23,7 @@
 		<br/>
 		Color: 			<input type="text" name="color"> R = Red, B = Black, U = Blue, G = Green, W = White, N = Colorless
 		<br/>
-		Manacosts: 		<input type="text" name="color"> Example 2 Red and 2 Colorless = RR2, Example 1 Red one Black 3 Colorless = RB3
+		Manacosts: 		<input type="text" name="manaColor"> Example 2 Red and 2 Colorless = RR2, Example 1 Red one Black 3 Colorless = RB3
 		<br/>
 		Combines with: 	<input type="text" name="combine">
 		<br/>
@@ -35,9 +35,9 @@
 				?>
 				Cardeffect: <?php echo $count; ?>:
 				<br/>
-					Effect: <input type="text" name="effect<?php echo $count;?>" size="200">
+					Effect: <input type="text" name="effect[]" size="200">
 					<br/>
-					Manacost: <input type="text" name="effectCost<?php echo$count;?>"> T = Tap, Example 1 Blue, 2 Colorless and Tap = U2T, If its a Planeswalker, type the amount of lifeloss or lifegain for the Planeswalker.
+					Manacost: <input type="text" name="effectCost[]"> T = Tap, Example 1 Blue, 2 Colorless and Tap = U2T, If its a Planeswalker, type the amount of lifeloss or lifegain for the Planeswalker.
 					If no Manacosts wirte 0.
 					<br/>
 					<br/>
@@ -57,7 +57,7 @@
 				Creaturetype:	<input type="text" name="creatureType">
 				<br/>
 				Static Effect: (Hold down CTRL for multi choice)<br/> 	
-								<select multiple>
+								<select name="selectStatic[]" multiple>
 									<option value="Deathtouch">Deathtouch</option>
 									<option value="Defender">Defender</option>
 									<option value="Double Strike">Double Strike</option>
@@ -74,7 +74,9 @@
 									<option value="Trample">Trample</option>
 									<option value="Vigilance">Vigilance</option>
 								</select>
+                <br/>
 				<?php
+
 			} else if ($_POST["cardType"] == "Spell")
 			{
 				?>
@@ -93,12 +95,14 @@
 			{
 				?>
 				Life: <input type="text" name="life">
+
 				<?php
 			}
 
-
-
 			?>
-	</form>
+        <br/>
+    <input type="hidden" name="cardType" value="<?php echo $_POST["cardType"] ?>">
+    <input type="submit" value="Save <?php echo $_POST["cardType"] ?>">
+    </form>
 </body>
 </html>
