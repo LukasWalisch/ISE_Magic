@@ -14,10 +14,10 @@
     <meta name="author" content="Team 13">
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="bootstrap-3.3.4-dist/main.css" rel="stylesheet">
+    <link href="bootstrap/main.css" rel="stylesheet">
 
 
     <title>Magic Karten Datenbank</title>
@@ -56,10 +56,10 @@
 
         <!-- TITEL -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <img src="Bilder/symbols.jpg" alt="Mana Symbole" width="270" height="auto">
             </div>
-            <div class="col-md-8">
+            <div class="col-xs-8">
                 <div class="data-title">
                     <h1>ISE Magic Karten Database</h1>
                 </div>
@@ -68,7 +68,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript && jquery -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 </body>

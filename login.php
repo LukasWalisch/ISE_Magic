@@ -9,10 +9,10 @@
     <meta name="author" content="Team 13">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="main.css" rel="stylesheet">
+    <link href="bootstrap/main.css" rel="stylesheet">
 
     <title>Login</title>
 </head>
@@ -20,12 +20,23 @@
 
 <div class="container">
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img src="bilder/magiclogo.png" alt="magiclogo"  width="115" height="auto">
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="row">
-        <div class="col-md-6 col-md-offset-1">
-            <img src="Bilder/loginlogo.png" alt="logo" id="loginlogo">
+        <div class="col-xs-6 col-md-offset-1">
+            <img src="bilder/loginlogo.png" alt="logo" id="loginlogo">
 
         </div>
-        <div class="col-md-5" id="login">
+        <div class="col-xs-5" id="login">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="form-signin">
 
                 <h3 class="form-signin-heading">Anmelden</h3>
@@ -35,13 +46,15 @@
                 <input type="password" name="password" class="form-control" placeholder="Passwort">
                 <br>
 
-                <input type="submit" name = "submit" value="login" class="btn btn-primary" >
+                <input type="submit" name = "submit" value="Anmelden" class="btn btn-primary" >
                 <h5 class="form-signin-heading text-right bottom-right">oder <a href="registration.html">hier Registrieren</a></h5>
             </form>
         </div>
     </div>
 
 </div>
+
+<?php include_once "footer.php"; ?>
 
 <?php
 
@@ -83,6 +96,7 @@ if (isset($_POST["submit"]))
 
 
 ?>
+
 
 </body>
 </html>
