@@ -101,6 +101,7 @@
 
 			?>
         <br/>
+        <input type="hidden" name="number" value="<?php echo $_POST["Number"]?>">
     <input type="hidden" name="cardType" value="<?php echo $_POST["cardType"] ?>">
     <input type="submit" value="Save <?php echo $_POST["cardType"] ?>">
     </form>
