@@ -22,6 +22,14 @@ $manaColor = $_POST["manaColor"];
 $combine = $_POST["combine"];
 $duplicates = $_POST["duplicate"];
 
+for ($count = 0; $count < $_POST["number"]; $count++) //Hier werden die Spalten in der Tabelle Fähigkeiten gespeichert. Statt echo
+{
+    echo $_POST["effect"][$count];
+    echo " \n";
+    echo $_POST["effectCost"][$count];
+    echo "\n";
+}
+
 if ($cardType == "Creature")
 {
     $attack = $_POST["attack"];
@@ -34,6 +42,12 @@ if ($cardType == "Creature")
     }
     rtrim($staticEffects, ",");
     echo $staticEffects;
+}else if ($cardType == "Spell")
+{
+    $spellType = $_POST["spellType"];
+}else if ($cardType == "Planeswalker")
+{
+    $planeLife = $_POST["life"];
 }
 
 

@@ -17,7 +17,7 @@
 	<title>New Card</title>
 </head>
 <body>
-    <?php include_once "header.php"; ?>
+
     <div class="container">
         <div class="col-md-12">
             <form class="form-group" action="newCard2.php" method="post">
@@ -27,6 +27,29 @@
                 <button type="button" class="btn btn-default active" name="cardType" value="Planeswalker">Planeswalker</button>
                 <button type="button" class="btn btn-default active" name="cardType" value="Land">Land</button>
             </form>
+            Is the Card a Creature, a Spell, a Planeswalker or a Land?<br/>
+            <form action="newCard2.php" method="post">
+                <input type="radio" name="cardType" value="Creature">Creature
+                <input type="radio" name="cardType" value="Spell">Spell
+                <input type="radio" name="cardType" value="Planeswalker">Planeswalker
+                <input type="radio" name="cardType" value="Land">Land
+                <br/>
+                How many cardeffects does the card contain? (Static effects doesn´t count. See here for possible static effects:
+                <a href="staticEffetcs.html" target="_blank">Static effects</a>)
+                <br/>
+                <select name="Number" size="1">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <br/>
+                <input type="submit" value="Next">
+            </form>
+            <br/>
 
 
 
@@ -43,29 +66,6 @@
 
 
 
-	Is the Card a Creature, a Spell, a Planeswalker or a Land?<br/>
-	<form action="newCard2.php" method="post">
-		<input type="radio" name="cardType" value="Creature">Creature
-		<input type="radio" name="cardType" value="Spell">Spell
-		<input type="radio" name="cardType" value="Planeswalker">Planeswalker
-		<input type="radio" name="cardType" value="Land">Land
-		<br/>
-	How many cardeffects does the card contain? (Static effects doesn´t count. See here for possible static effects:
-		<a href="staticEffetcs.html" target="_blank">Static effects</a>)
-		<br/>
-		<select name="Number" size="1">
-			<option>0</option>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-		</select>
-		<br/>
-		<br/>
-		<input type="submit" value="Next">
-	</form>
-	<br/>
 
 
 
