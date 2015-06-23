@@ -18,12 +18,14 @@
 </head>
 <body>
 
+    <?php include_once "header.php"; ?>
+
     <div class="container">
         <div class="col-md-12">
             <form class="form-group" action="newCard2.php" method="post">
                 <h3>Wähle den Kartentyp:</h3>
                 <button type="button" class="btn btn-default active" name="cardType" value="Creature">Kreatur</button>
-                <button type="button" class="btn btn-default active" name="cardType" value="Spell">Verzauberung</button>
+                <button type="button" class="btn btn-default active" name="cardType" value="Spell">Zauber</button>
                 <button type="button" class="btn btn-default active" name="cardType" value="Planeswalker">Planeswalker</button>
                 <button type="button" class="btn btn-default active" name="cardType" value="Land">Land</button>
             </form>
@@ -52,24 +54,10 @@
             <br/>
 
 
-
-
-
-
         </div>
-
-
-
     </div>
 
-
-
-
-
-
-
-
-
+    <?php include_once "footer.php"; ?>
 		
 </body>
 </html>

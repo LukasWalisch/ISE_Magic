@@ -35,7 +35,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Magic Karten</a>
+                    <a class="navbar-brand" href="navigation.php">
+                        <img src="bilder/magiclogo.png" alt="magiclogo"  width="115" height="auto">
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +59,7 @@
         <!-- TITEL -->
         <div class="row">
             <div class="col-xs-4">
-                <img src="Bilder/symbols.jpg" alt="Mana Symbole" width="270" height="auto">
+                <img src="bilder/symbols.jpg" alt="Mana Symbole" width="270" height="auto">
             </div>
             <div class="col-xs-8">
                 <div class="data-title">
