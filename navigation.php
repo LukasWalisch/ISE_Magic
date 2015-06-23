@@ -15,6 +15,9 @@
 	<title>Navigation</title>
 </head>
 <body>
+
+    <?php include_once "header.php"; ?>
+
     <div class="container">
 
         <!-- SUCHFUNKTION -->
@@ -31,5 +34,7 @@
 	<form action="newCard.php" method="post">
 	<input type="submit" value="New Card">
 	</form>
+
+    <?php include_once "footer.php"; ?>
 </body>
 </html>
