@@ -84,7 +84,10 @@ if (isset($_POST["submit"]))
     {
         ?>
 
-        <script>alert("login fehlgeschlagen")</script>
+        <div class="container">
+            <div class="alert alert-danger text-center" role="alert">Login fehlgeschlagen</div>
+        </div>
+
 
         <?php
 
