@@ -28,23 +28,6 @@
         </form>
 
     </div>
-
-Hallo1
-
-	<?php
-        if ($_POST["username"] != "admin" && $_POST["password"] != "admin")
-        {
-           include("error.html");
-            return;
-        }
-
-
-		$card = $_GET["Kartenname"];
-		if ($card != NULL)
-		{
-			echo "Angelegte Karte: ".$card;
-		}
-	?>
 	<form action="newCard.php" method="post">
 	<input type="submit" value="New Card">
 	</form>
