@@ -81,29 +81,4 @@
 			{
 				?>
 				Spelltype: <select name="spellType" size="1">
-								<option>Instant</option>
-								<option>Sourcery</option>
-								<option>Artefact</option>
-								<option>Enchantment</option>
-								<option>Enchantment-Aura</option>
-								<option>Enchantment-Aura Curse</option>
-								<option>Enchantment-Artefact</option>
-								<option>Enchant-Land</option>
-							</select>
-				<?php
-			} else if ($_POST["cardType"] == "Planeswalker")
-			{
-				?>
-				Life: <input type="text" name="life">
-
-				<?php
-			}
-
-			?>
-        <br/>
-        <input type="hidden" name="number" value="<?php echo $_POST["Number"]?>">
-    <input type="hidden" name="cardType" value="<?php echo $_POST["cardType"] ?>">
-    <input type="submit" value="Save <?php echo $_POST["cardType"] ?>">
-    </form>
-</body>
-</html>
+								
