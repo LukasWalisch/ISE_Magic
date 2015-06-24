@@ -13,9 +13,14 @@
     <!-- Custom styles for this template -->
     <link href="bootstrap/main.css" rel="stylesheet">
 
-    <title>Login</title>
+    <title>Neue Karte</title>
 </head>
 <body>
+    <div class="container">
+        <div class="jumbotron">
+
+        </div>
+    </div>
 
 
 
