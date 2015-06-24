@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="SS15 IS Engineering (PR), Universitaet Wien">
     <meta name="author" content="Team 13">
@@ -14,10 +12,10 @@
     <!-- Custom styles for this template -->
     <link href="bootstrap/main.css" rel="stylesheet">
 
-    <title>Login</title>
+
+    <title> Registrierung </title>
 </head>
 <body>
-
 <div class="container">
 
     <!-- Navigation -->
@@ -31,87 +29,32 @@
         </div>
     </nav>
 
+
     <div class="row">
         <div class="col-xs-5 col-md-offset-1">
             <img src="bilder/loginlogo.png" alt="logo" id="loginlogo">
 
         </div>
         <div class="col-xs-5" id="login">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="form-signin">
-
-                <h3 class="form-signin-heading">Anmelden</h3>
-
+            <form action="PHP_Functions/persistUser.php" method="post" class="form-signin">
+                <h3 class="form-signin-heading">Registrieren</h3>
                 <input type="text" name="username" class="form-control" placeholder="Username">
                 <br>
                 <input type="password" name="password" class="form-control" placeholder="Passwort">
                 <br>
 
-                <input type="submit" name = "submit" value="Anmelden" class="btn btn-primary" >
-                <h5 class="form-signin-heading text-right bottom-right">oder <a href="register.php">hier Registrieren</a></h5>
+                <button class="btn btn-primary" type="submit" value="Registrieren">Registrieren</button>
             </form>
         </div>
     </div>
-
 </div>
 
+<!-- FUSSZEILE -->
 <?php include_once "footer.php"; ?>
-
-<?php
-
-if (isset($_POST["submit"]))
-{
-    // Create connection
-    $conn = mysqli_connect("isemagic.duckdns.org", "lukas", "", "isemagic");
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $postUser = $_POST["username"];
-    $postPassword = $_POST["password"];
-
-    $query = "SELECT * FROM User WHERE username = '$postUser' AND password = '$postPassword'";
-
-    $result = mysqli_query($conn, $query);
-
-    if(mysqli_num_rows($result) == 1)
-    {
-        header("Location: navigation.php");
-        die();
-    }
-
-    else
-    {
-        ?>
-
-        <div class="container">
-            <div class="alert alert-danger text-center" role="alert">Login fehlgeschlagen</div>
-        </div>
-
-
-        <?php
-
-        die();
-    }
-
-}
-
-
-
-?>
 
 <!-- Bootstrap core JavaScript && jquery -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-

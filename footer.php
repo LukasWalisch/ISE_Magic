@@ -23,12 +23,12 @@
     <title>Magic Karten Datenbank</title>
 </head>
 <body>
-    <div class="container">
         <!-- FUSSZEILE -->
-        <div class="data-footer">
+        <footer>
+            <p> </p>
             <p>SS15 ISE (PR) - by Team 13</p>
-        </div>
-    </div>
+        </footer>
+
 
 <!-- Bootstrap core JavaScript && jquery -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
