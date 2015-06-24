@@ -33,23 +33,35 @@
                 Manakosten:
                 <br>
                 <button type="button" onclick="incrementBlackMana()">black mana +</button>
-                <input type="text" value="0" Id="blackTextField" readonly>
+                <input type="text" value="0" Id="blackTextField" name="blackTextField" readonly>
                 <br>
                 <button type="button" onclick="incrementWhiteMana()">White mana +</button>
-                <input type="text" value="0" Id="whiteTextField" readonly>
+                <input type="text" value="0" Id="whiteTextField" name="whiteTextField" readonly>
                 <br>
                 <button type="button" onclick="incrementBlueMana()">Blue mana +</button>
-                <input type="text" value="0" Id="blueTextField" readonly>
+                <input type="text" value="0" Id="blueTextField" name="blueTextField" readonly>
                 <br>
                 <button type="button" onclick="incrementGreenMana()">Green mana +</button>
-                <input type="text" value="0" Id="greenTextField" readonly>
+                <input type="text" value="0" Id="greenTextField" name="greenTextField" readonly>
                 <br>
                 <button type="button" onclick="incrementRedMana()">Red mana +</button>
-                <input type="text" value="0" Id="redTextField" readonly>
+                <input type="text" value="0" Id="redTextField" name="redTextField" readonly>
                 <br>
                 <button type="button" onclick="incrementColorlessMana()">Colorless mana +</button>
-                <input type="text" value="0" Id="colorlessTextField" readonly>
+                <input type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
                 <br>
+                <?php
+                for($count = 1; $count <= $_POST["Number"]; $count++)
+                {
+                    ?>
+                    Cardeffect: <?php echo $count; ?>:
+                    <br/>
+                    Fähigkeit: <input type="text" name="effect[]" row="4">
+                    <br/>
+                    <br/>
+                    <?php
+                }
+                ?>
 
                 <input type="submit" name="submit">
             </form>
@@ -67,6 +79,26 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
+
+
+        $postBlack = $_POST["blackTextField"];
+        $postWhite = $_POST["whiteTextField"];
+        $postBlue = $_POST["blueTextField"];
+        $postGreen = $_POST["greenTextField"];
+        $postRed = $_POST["redTextField"];
+        $postColorless = $_POST["colorlessTextField"];
+
+        $manacostQuery = "INSERT INTO Manacost (red, blue, green, white, black, colorless) VALUES ('$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
+
+        mysqli_query($conn, $manacostQuery);
+
+        // Letzter eintrag ist die manacost_id der neuen karte
+        $maxManacostQuery = "SELECT MAX(ID) AS ID FROM Manacost";
+
+        // ein einzelens result wird in eine variable gespeichert
+        $result = mysqli_query($conn, $maxManacostQuery);
+
+        $manacostID = mysqli_fetch_assoc($result)["ID"];
 
         $postCardname = $_POST["cardname"];
         $postRarity = $_POST["rarity"];
@@ -88,7 +120,7 @@
         }
         else
         {
-            $query = "INSERT INTO Test (name, rarity, legendary) VALUES ('$postCardname', '$postRarity', '$postLegendary')";
+            $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID')";
 
             mysqli_query($conn, $query);
             echo "erfolgreich gespeichert";
