@@ -18,9 +18,12 @@
 <body>
     <div class="container">
         <div class="jumbotron">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
+            </form>
         </div>
     </div>
+
 
 
 
