@@ -30,7 +30,7 @@
                 <h3>Wähle den Kartentyp:</h3>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="cardType" value="Creatur"> Kreatur
+                        <input type="radio" name="cardType" value="Creature"> Kreatur
                     </label>
                 </div>
                 <div class="radio">

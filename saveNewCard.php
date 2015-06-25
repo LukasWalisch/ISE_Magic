@@ -83,7 +83,37 @@
                         <br>
                         <input class="form-control mana-font-size" type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
                     </div>
+
+                    <input type="hidden" name="cardType" value="<?php $_POST["cardType"] ?>"> <!-- Weiterleitung einer Variable an das nächste Form -->
+                    <input type="hidden" name="Number" value="<?php $_POST["Number"] ?>">
                 </div>
+
+                <?php
+                if ($_POST["cardType"] == "Creature")
+                {
+                    ?>
+                    Angriff: <input type="text" name="attack">
+                    <br>
+                    Verteidigung: <input type="text" name="defense">
+                    <br>
+                    <input type="checkbox" name="staticEffects[]" value="Deathtouch">Deathtouch<br>
+                    <input type="checkbox" name="staticEffects[]" value="Defender">Defender<br>
+                    <input type="checkbox" name="staticEffects[]" value="Double Strike">Double Strike<br>
+                    <input type="checkbox" name="staticEffects[]" value="First Strike">First Strike<br>
+                    <input type="checkbox" name="staticEffects[]" value="Flash">Flash<br>
+                    <input type="checkbox" name="staticEffects[]" value="Flying">Flying<br>
+                    <input type="checkbox" name="staticEffects[]" value="Haste">Haste<br>
+                    <input type="checkbox" name="staticEffects[]" value="Hexproof">Hexproof<br>
+                    <input type="checkbox" name="staticEffects[]" value="Indestructible">Indestructible<br>
+                    <input type="checkbox" name="staticEffects[]" value="Intimidate">Intimidate<br>
+                    <input type="checkbox" name="staticEffects[]" value="Lifelink">Lifelink<br>
+                    <input type="checkbox" name="staticEffects[]" value="Reach">Reach<br>
+                    <input type="checkbox" name="staticEffects[]" value="Shroud">Shroud<br>
+                    <input type="checkbox" name="staticEffects[]" value="Trample">Trample<br>
+                    <input type="checkbox" name="staticEffects[]" value="Vigilance">Vigilance<br>
+                <?php
+                }
+                ?>
 
                 <?php
                 for($count = 1; $count <= $_POST["Number"]; $count++)
@@ -92,8 +122,8 @@
 
                     <div class="row">
                         <div class="col-xs-6">
-                            <h3>Karteneffekt <?php echo $count; ?> : </h3>
-                            <textarea class="form-control" name="effect[]" rows="4" placeholder="Fähigkeit"></textarea>
+                            <h3>Kartenfähigkeit <?php echo $count; ?> : </h3>
+                            <textarea class="form-control" name="abilities[]" rows="4" placeholder="Fähigkeit"></textarea>
                             <br/>
                             <br/>
                         </div>
@@ -103,7 +133,7 @@
                 }
                 ?>
 
-                <input  class="btn btn-primary" type="submit" name="Karte erstellen">
+                <input  class="btn btn-primary" type="submit" name="submit" value="Karte erstellen">
             </form>
         </div>
     </div>
@@ -119,7 +149,6 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
 
         $postBlack = $_POST["blackTextField"];
         $postWhite = $_POST["whiteTextField"];
@@ -140,6 +169,7 @@
 
         $manacostID = mysqli_fetch_assoc($result)["ID"];
 
+        $postCardType = $_POST["cardType"];
         $postCardname = $_POST["cardname"];
         $postRarity = $_POST["rarity"];
         $postLegendary = $_POST["legendary"];
@@ -157,15 +187,34 @@
             </div>
 
             <?php
+            $insertSuccess = false;
         }
         else
         {
-            $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID')";
+            $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
 
             mysqli_query($conn, $query);
+            $insertSuccess = "true"; // Flag das mir angibt ob die speicherung erfolgt ist
             echo "erfolgreich gespeichert";
+            $insertSuccess = true;
         }
 
+        if ($postCardType == "Creature" and $insertSuccess == true)
+        {
+            $postAttack = $_POST["attack"];
+            $postDefense = $_POST["defense"];
+            $staticEffects = $_POST["staticEffects[]"];
+            $staticEffectString = implode(", ", $staticEffects); // verwandelt ein array in einen String
+
+            $updateQuery  = "UPDATE Test SET attack = '$postAttack' WHERE name = '$postCardname'";
+            mysqli_query($conn, $updateQuery);
+
+            $updateQuery  = "UPDATE Test SET defense = '$postDefense' WHERE name = '$postCardname'";
+            mysqli_query($conn, $updateQuery);
+
+            $updateQuery  = "UPDATE Test SET staticeffects = '$staticEffectString' WHERE name = '$postCardname'";
+            mysqli_query($conn, $updateQuery);
+        }
 
         mysqli_close($conn);
     }
