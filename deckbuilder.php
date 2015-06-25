@@ -39,13 +39,15 @@
             <form class="form-group" action="#" method="post">
                 <h3>Neues Deck hinzufügen</h3>
 
-                <div class="col-xs-5">
+                <div class="col-xs-3">
                     <input type="text" name="deckName" class="form-control" placeholder="Deckname">
                     <br>
                     <input type="text" name="deckDescription" class="form-control" placeholder="Beschreibung">
                     <br>
                     <input type="submit" name = "submit" value="Erstellen" class="btn btn-primary" >
                 </div>
+
+
 
             </form>
 

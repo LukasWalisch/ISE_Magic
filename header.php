@@ -46,7 +46,7 @@
                         <li><a class="data-nav-item" href="newCard.php">Karte eintragen</a></li>
                         <li><a class="data-nav-item" href="#">Karten anzeigen</a></li>
                         <li><a class="data-nav-item" href="#">Karte bearbeiten</a></li>
-                        <li><a class="data-nav-item" href="#">Deckbuilder</a></li>
+                        <li><a class="data-nav-item" href="deckbuilder.php">Deckbuilder</a></li>
                         <li><a class="data-nav-item" href="info.php">Info</a></li>
                     </ul>
 

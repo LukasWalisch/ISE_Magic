@@ -16,54 +16,94 @@
     <title>Neue Karte</title>
 </head>
 <body>
+    <?php include_once "header.php"; ?>
+
     <div class="container">
-        <div class="jumbotron">
+        <div class="col-xs-12 field">
+            <h2 class="item-title">Karte eintragen</h2>
+
+            <h3>Neue Karte: <?php echo $_POST["cardType"] ?></h3>
+
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                <input type="text" name="cardname">
-                <br>
-                <select name="rarity" size="1">
-                    <option>Common</option>
-                    <option>Uncommon</option>
-                    <option>Rare</option>
-                    <option>Mythic</option>
-                </select>
-                <br>
-                Legendär: <input type="checkbox" name="legendary" value="ja">
-                <br>
-                Manakosten:
-                <br>
-                <button type="button" onclick="incrementBlackMana()">black mana +</button>
-                <input type="text" value="0" Id="blackTextField" name="blackTextField" readonly>
-                <br>
-                <button type="button" onclick="incrementWhiteMana()">White mana +</button>
-                <input type="text" value="0" Id="whiteTextField" name="whiteTextField" readonly>
-                <br>
-                <button type="button" onclick="incrementBlueMana()">Blue mana +</button>
-                <input type="text" value="0" Id="blueTextField" name="blueTextField" readonly>
-                <br>
-                <button type="button" onclick="incrementGreenMana()">Green mana +</button>
-                <input type="text" value="0" Id="greenTextField" name="greenTextField" readonly>
-                <br>
-                <button type="button" onclick="incrementRedMana()">Red mana +</button>
-                <input type="text" value="0" Id="redTextField" name="redTextField" readonly>
-                <br>
-                <button type="button" onclick="incrementColorlessMana()">Colorless mana +</button>
-                <input type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
-                <br>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3>Kartenname</h3>
+                        <input class="form-control" type="text" name="cardname" placeholder="Kartenname">
+                        <br>
+                        <h3>Seltenheit:</h3>
+                        <div class="dropdown">
+                            <select  class="btn btn-default btn-lg dropdown-toggle" name="rarity" size="1">
+                                <option>Common</option>
+                                <option>Uncommon</option>
+                                <option>Rare</option>
+                                <option>Mythic</option>
+                            </select>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="legendary" value="ja"> Legendär
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h3>Manakosten:</h3>
+
+                <div class="row">
+
+                    <div class="col-xs-1">
+                        <img onclick="incrementBlackMana()" src="bilder/Black_Mana.png" alt="blackmana">
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="blackTextField" name="blackTextField" readonly>
+                    </div>
+                    <div class="col-xs-1">
+                        <img onclick="incrementWhiteMana()" src="bilder/White_Mana.png" alt="whitemana">
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="whiteTextField" name="whiteTextField" readonly>
+                    </div>
+                    <div class="col-xs-1">
+                        <img onclick="incrementBlueMana()" src="bilder/Blue_Mana.png" alt="bluemana">
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="blueTextField" name="blueTextField" readonly>
+                    </div>
+                    <div class="col-xs-1">
+                        <img onclick="incrementGreenMana()" src="bilder/Green_Mana.png" alt="greenmana">
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="greenTextField" name="greenTextField" readonly>
+                    </div>
+                    <div class="col-xs-1">
+                        <img onclick="incrementRedMana()" src="bilder/Red_Mana.png" alt="redmana">
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="redTextField" name="redTextField" readonly>
+                    </div>
+                    <div class="col-xs-1">
+                        <img onclick="incrementColorlessMana()">Colorless mana +</button>
+                        <br>
+                        <input class="form-control mana-font-size" type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
+                    </div>
+                </div>
+
                 <?php
                 for($count = 1; $count <= $_POST["Number"]; $count++)
                 {
                     ?>
-                    Cardeffect: <?php echo $count; ?>:
-                    <br/>
-                    Fähigkeit: <input type="text" name="effect[]" row="4">
-                    <br/>
-                    <br/>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h3>Karteneffekt <?php echo $count; ?> : </h3>
+                            <textarea class="form-control" name="effect[]" rows="4" placeholder="Fähigkeit"></textarea>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+
                     <?php
                 }
                 ?>
 
-                <input type="submit" name="submit">
+                <input  class="btn btn-primary" type="submit" name="Karte erstellen">
             </form>
         </div>
     </div>
@@ -184,6 +224,12 @@
         }
 
     </script>
+
+    <?php include_once "footer.php"; ?>
+
+    <!-- Bootstrap core JavaScript && jquery -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 </body>
 
