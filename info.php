@@ -18,7 +18,40 @@
 </head>
 <body>
     <?php include_once "header.php"; ?>
+    <div class="container">
+        <div class="col-md-4" style="padding-right:20px; border-right: 1px solid #ccc;">
+            <h2>Statische Effekte</h2>
+            Deathtouch<br/>
+            Defender<br/>
+            Double Strike<br/>
+            First Strike<br/>
+            Flash<br/>
+            Flying<br/>
+            Haste<br/>
+            Hexproof<br/>
+            Indestructible<br/>
+            Intimidate<br/>
+            Lifelink<br/>
+            Reach<br/>
+            Shroud<br/>
+            Trample<br/>
+            Vigilance<br/>
+        </div>
+        <div class="col-md-8">
+            <h2>Beschreibung der Fähigkeiten</h2>
+            Sollte eine Fähigkeit einer Karte Manakosen besitzen werden sie wie folgt eingetrage:<br/>
+            Pro farbiges Mana wird der Anfangsbuchstabe angegeben<br/>
+            (B = Black, U = Blue, R = Red, W = White, G = Green)<br/>
+            Farbloses Mana wird mit der Zahl eingegeben.<br/>
+            Soll die Karte dabei getappt werden, so wird ein ,T nach den Manakosten angegeben<br/>
+            Sind die Manakosten fertiggebaut wird noch ein : angehängt</br>
+            Beispiel: 2 Rote Mana, 1 Farbloses und tappen -> "RR1,T: "
+        </div>
+        <div class="col-md-4">
 
+        </div>
+
+    </div>
     <?php include_once "footer.php"; ?>
 
 
