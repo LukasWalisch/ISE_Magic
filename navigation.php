@@ -20,18 +20,19 @@
 
     <div class="container">
         <div class="col-xs-12 field">
-            <!-- SUCHFUNKTION -->
+
             <form action="foundCards.php" method="post">
                 <h2 class="item-title">Karte Suchen</h2>
-
-                <input type="text" class="form-control" placeholder="Karte suchen">
-                <br/>
+                <br>
 
                 <div class="row">
-                    <div class="col-xs-5">
-                        <img src="bilder/jacebeleren.jpeg" alt="jacebeleren">
+                    <div class="col-xs-3">
+                        <img src="bilder/jacebeleren.jpeg" alt="jacebeleren" width="200" height="auto">
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-9">
+                        <!-- SUCHFUNKTION -->
+                        <input type="text" class="form-control" placeholder="Karte suchen">
+                        <br/>
                         <h3>Kartentyp:</h3>
                         <div class="checkbox">
                             <label>
@@ -54,11 +55,9 @@
                                 <p> </p>
                             </label>
                         </div>
+                        <input class="btn btn-primary" type="submit" value="Suchen">
                     </div>
                 </div>
-                <div class=""
-
-                <input class="btn btn-primary" type="submit" value="Suchen">
 
             </form>
 

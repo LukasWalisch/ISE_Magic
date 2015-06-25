@@ -26,7 +26,7 @@
         <div class="col-xs-12 field">
             <h2 class="item-title">Karte eintragen</h2>
 
-            <form class="form-group" action="newCard2.php" method="post">
+            <form class="form-group" action="saveNewCard.php" method="post">
                 <h3>Wähle den Kartentyp:</h3>
                 <div class="radio">
                     <label>
