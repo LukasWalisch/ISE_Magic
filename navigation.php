@@ -21,7 +21,7 @@
     <div class="container">
         <div class="col-xs-12 field">
 
-            <form action="foundCards.php" method="post">
+            <form action="foundCard.php" method="post">
                 <h2 class="item-title">Karte Suchen</h2>
                 <br>
 
@@ -31,27 +31,27 @@
                     </div>
                     <div class="col-xs-9">
                         <!-- SUCHFUNKTION -->
-                        <input type="text" class="form-control" placeholder="Karte suchen">
+                        <input type="text" class="form-control" placeholder="Karte suchen" name="nameString">
                         <br/>
                         <h3>Kartentyp:</h3>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="checkCardType[]" value="Creatur"> Kreatur
+                                <input type="checkbox" name="creatureType" value="Creatur"> Kreatur
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="checkCardType[]" value="Spell"> Zauber
+                                <input type="checkbox" name="spellType" value="Spell"> Zauber
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="checkCardType[]" value="Planeswalker"> Planeswalker
+                                <input type="checkbox" name="planeType" value="Planeswalker"> Planeswalker
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="checkCardType[]" value="Land"> Land
+                                <input type="checkbox" name="landType" value="Land"> Land
                                 <p> </p>
                             </label>
                         </div>
