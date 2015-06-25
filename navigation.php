@@ -21,7 +21,7 @@
     <div class="container">
         <div class="col-xs-12 field">
 
-            <form action="foundCard.php" method="post">
+            <form action="foundCards.php" method="post">
                 <h2 class="item-title">Karte Suchen</h2>
                 <br>
 
@@ -33,29 +33,67 @@
                         <!-- SUCHFUNKTION -->
                         <input type="text" class="form-control" placeholder="Karte suchen" name="nameString">
                         <br/>
-                        <h3>Kartentyp:</h3>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="creatureType" value="Creatur"> Kreatur
-                            </label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h3>Farbe:</h3>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="Red"> Rot
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="Blue"> Blau
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="Black"> Schwarz
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="Green"> Grün
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="White"> Weiß
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="Colorless"> Farblos
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <h3>Kartentyp:</h3>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Creatur"> Kreatur
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Spell"> Zauber
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Planeswalker"> Planeswalker
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Land"> Land
+                                        <p> </p>
+                                    </label>
+                                </div>
+                                <input class="btn btn-primary" type="submit" value="Suchen">
+                            </div>
+
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="spellType" value="Spell"> Zauber
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="planeType" value="Planeswalker"> Planeswalker
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="landType" value="Land"> Land
-                                <p> </p>
-                            </label>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Suchen">
                     </div>
                 </div>
 
