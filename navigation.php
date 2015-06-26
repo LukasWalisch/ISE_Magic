@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="checkColor[]" value="Colorless"> Farblos
+                                                <input type="checkbox" name="checkColor[]" value="Colorless"><img src="bilder/Colorless_Mana.png" alt="colorlessmana">
                                             </label>
                                         </div>
                                     </div>

@@ -68,9 +68,9 @@
 
                 <div class="row">
                     <div class="col-xs-3">
-                        HIER KOMMT DIE KARTENRUECKSEITE HIN
+                        <img src="bilder/rueckseite.jpeg" width="160" height="auto" align="right">
                     </div>
-                    <div class="col-xs-9">
+                    <div class="col-xs-8">
                         <ul class="list-group">
                             <li class="list-group-item"><h4><?php echo $zeile["name"] ?></h4></li>
                             <li class="list-group-item">
@@ -105,7 +105,7 @@
                                                         }elseif ($zeile["cardtype"] == "Planeswalker") echo "Planeswalker Leben" . $zeile["life"] . "<br/>";
                                                         ?>
                                 <form action="editDeck.php" method="post">
-                                <div class="dropdown">
+                                <div class="dropdown ">
                                     <select class="btn btn-default btn-lg dropdown-toggle">
                                     <?php
                                         $sqlDeck = "SELECT deckname FROM Deck";
@@ -124,6 +124,7 @@
                         </ul>
 
                     </div>
+                    <div class="col-xs-1"></div>
 
                 </div>
 
