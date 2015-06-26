@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="958474770">
+  <component name="DataSourceManagerImpl" format="xml" hash="2469893654">
     <data-source source="LOCAL" name="MySQL - @isemagic.duckdns.org" uuid="1c4a8181-3c5f-46c4-8bd4-70d8f141928a">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

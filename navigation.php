@@ -99,6 +99,10 @@
 
             </form>
 
+
+
+
+
             <div class="col-xs-12">
                 <p> </p>
             </div>
@@ -108,5 +112,10 @@
 
 
     <?php include_once "footer.php"; ?>
+
+    <!-- Bootstrap core JavaScript && jquery -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 </body>
 </html>

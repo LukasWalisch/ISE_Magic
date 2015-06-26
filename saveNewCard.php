@@ -24,6 +24,7 @@
 
             <h3>Neue Karte: <?php echo $_POST["cardType"] ?></h3>
 
+
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <div class="row">
                     <div class="col-xs-6">

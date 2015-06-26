@@ -25,7 +25,7 @@
             <h2 class="item-title">Deckbuilder</h2>
 
             <!-- VERFUEGBARE DECKS BEARBEITEN -->
-            <form class="form-group" action="#" method="get">
+            <form class="form-group" action="editDeck.php" method="get">
                 <h3>Verfügbare Decks:</h3>
                 <br>
                 <div class="dropdown">
@@ -35,22 +35,24 @@
                 <input class="btn btn-primary" type="submit" value="Bearbeiten">
             </form>
 
-            <!-- NEUES DECK HINZUFUEGEN -->
-            <form class="form-group" action="#" method="post">
+            <form class="form-group" action="editDeck.php" method="post">
                 <h3>Neues Deck hinzufügen</h3>
-
-                <div class="col-xs-3">
-                    <input type="text" name="deckName" class="form-control" placeholder="Deckname">
-                    <br>
-                    <input type="text" name="deckDescription" class="form-control" placeholder="Beschreibung">
-                    <br>
-                    <input type="submit" name = "submit" value="Erstellen" class="btn btn-primary" >
+                <!-- NEUES DECK HINZUFUEGEN -->
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" name="deckName" class="form-control" placeholder="Deckname">
+                        <br>
+                        <textarea name="deckDescription" class="form-control" rows="3" placeholder="Beschreibung"></textarea>
+                        <br>
+                        <input type="submit" name = "submit" value="Erstellen" class="btn btn-primary" >
+                    </div>
                 </div>
-
-
-
             </form>
+        </div>
 
+
+        <div class="col-xs-12">
+            <p></p>
         </div>
 
     </div>
