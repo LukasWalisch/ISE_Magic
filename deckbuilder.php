@@ -25,34 +25,41 @@
             <h2 class="item-title">Deckbuilder</h2>
 
             <!-- VERFUEGBARE DECKS BEARBEITEN -->
-            <form class="form-group" action="editDeck.php" method="get">
+            <form class="form-group" action="editDeck.php" method="post">
                 <h3>Verfügbare Decks:</h3>
                 <br>
                 <div class="dropdown">
+                    <select style="width: 300px" name="selectedDeck">
+                    <?php
+                        include "PHP_Functions/searchDeck.php";
+                        while ($zeile = mysqli_fetch_array($deckFoundQuery, MYSQL_ASSOC))
+                        {
+                            echo "<option>". $zeile["deckname"] . "</option>";
+                        }
+                    ?>
 
+                    </select>
                 </div>
                 <br>
                 <input class="btn btn-primary" type="submit" value="Bearbeiten">
             </form>
 
+            <!-- NEUES DECK HINZUFUEGEN -->
             <form class="form-group" action="editDeck.php" method="post">
                 <h3>Neues Deck hinzufügen</h3>
-                <!-- NEUES DECK HINZUFUEGEN -->
-                <div class="row">
-                    <div class="col-xs-6">
-                        <input type="text" name="deckName" class="form-control" placeholder="Deckname">
-                        <br>
-                        <textarea name="deckDescription" class="form-control" rows="3" placeholder="Beschreibung"></textarea>
-                        <br>
-                        <input type="submit" name = "submit" value="Erstellen" class="btn btn-primary" >
-                    </div>
+
+                <div class="col-xs-3">
+                    <input type="text" name="deckName" class="form-control" placeholder="Deckname">
+                    <br>
+                    <input type="text" name="description" class="form-control" placeholder="Beschreibung">
+                    <br>
+                    <input type="submit" name = "createDeck" value="Erstellen" class="btn btn-primary" >
                 </div>
+
+
+
             </form>
-        </div>
 
-
-        <div class="col-xs-12">
-            <p></p>
         </div>
 
     </div>

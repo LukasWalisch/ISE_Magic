@@ -22,7 +22,7 @@
 
 $checkType = $_POST["checkType"];
 $nameString = $_POST["nameString"];
-$checkColor = $_POST["checkColor"];
+$checkColor = $_POST["checkColor"]; //Array
 
 include "PHP_Functions/searchCard.php"; //Returns cardFoundQuery.
 if(! $cardFoundQuery )
@@ -43,8 +43,11 @@ while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC))
             break;
         }
     }
-    if ($flag) continue;
-    if(!(in_array($zeile["cardtype"], $checkType))) continue;
+    if (!(empty($checkColor)))
+    {
+        if ($flag) continue;
+    }
+    if (!(empty($checkType)) && !(in_array($zeile["cardtype"], $checkType))) continue;
     if ($nameString == "" || strpos($zeile["name"],$nameString) !== false)
     {
         $typeString = "";
