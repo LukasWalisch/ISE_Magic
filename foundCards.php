@@ -27,14 +27,22 @@
         $checkColor = $_POST["checkColor"]; //Array
 
         include "PHP_Functions/searchCard.php"; //Returns cardFoundQuery.
-        if(! $cardFoundQuery )
-        {
+
+        // ANZAHL DER TUPEL
+        $numberOfRows = mysqli_num_rows($cardFoundQuery);
+        echo $numberOfRows;
+
+
+        if($numberOfRows == 0) {
             ?>
-            <div class="alert alert-info" role="alert">
-                Keine Karten gefunden.
+
+            <div class="alert alert-info text-center" role="alert">
+                <strong>Keine Karten gefunden.</strong>
             </div>
+
             <?php
-            die("Keine Ergebnisse");
+            include_once "footer.php";
+            die();
         }
         while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC))
         {

@@ -19,18 +19,33 @@
     <?php include_once "header.php"; ?>
 
     <div class="container field">
-        <div class="col-xs-12">
-            <h2 class="item-title">Karten anzeigen</h2>
+        <h2 class="item-title">Karten anzeigen</h2>
+
+        <?php
+
+        $checkType = $_POST["checkType"];
+        $nameString = $_POST["nameString"];
+        $checkColor = $_POST["checkColor"];
+
+        include "PHP_Functions/searchCard.php";
+
+        // ANZAHL DER TUPEL
+        $numberOfRows = mysqli_num_rows($cardFoundQuery);
+        echo $numberOfRows;
+
+        if($numberOfRows == 0) {
+            ?>
+
+            <div class="alert alert-info text-center" role="alert">
+                <strong>Keine Karten gefunden.</strong>
+            </div>
 
             <?php
+            include_once "footer.php";
+            die();
+        }
 
-            $checkType = $_POST["checkType"];
-            $nameString = $_POST["nameString"];
-            $checkColor = $_POST["checkColor"];
-
-            include "PHP_Functions/searchCard.php";
-
-            while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC)){
+        while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC)){
 
             ?>
 
@@ -96,14 +111,11 @@
 
             </div>
 
-            <?php
-            }
+        <?php
+        }
 
 
-            ?>
-
-
-        </div>
+        ?>
     </div>
 
     <?php include_once "footer.php"; ?>
