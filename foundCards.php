@@ -127,59 +127,6 @@
 
                 </div>
 
-        <h4><?php echo $zeile["name"] ?></h4>
-        <br/>
-        <?php echo $typeString ?>
-        Rarität: <?php echo $zeile["rarity"] ?><br/>
-        Edition: <?php echo $zeile["edition"] ?><br/>
-        Manakosten:
-                <?php
-                if ($zeile["red"] > 0) echo $zeile["red"] . "Rot  ";
-                if ($zeile["blue"] > 0) echo $zeile["blue"] . "Blau  ";
-                if ($zeile["black"] > 0) echo $zeile["black"] . "Schwarz  ";
-                if ($zeile["green"] > 0) echo $zeile["green"] . "Grün  ";
-                if ($zeile["white"] > 0) echo $zeile["white"] . "Weiß  ";
-                if ($zeile["colorless"] > 0) echo $zeile["colorless"] . "Colorless  ";
-                ?>
-        </br>
-        Fähigkeiten: <br/>
-                <?php
-                $sqlAbility = "SELECT * FROM Ability WHERE cardname =" . $zeile["name"];
-                $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbility);
-                while ($row = mysql_fetch_array($sqlAbilityResult, MYSQL_ASSOC))
-                {
-                    echo $row["description"];
-                }
-                if ($zeile["Cardtype"] == "Creature")
-                {
-                    ?>
-                    Statische Effekte: <?php echo $zeile["staticeffects"] ?>
-                    Stärke: <?php echo $zeile["attack"] ?><br/>
-                    Widerstandskraft: <?php echo $zeile["defense"] ?><br/>
-                <?php
-                }elseif ($zeile["cardtype"] == "Planeswalker") echo "Planeswalker Leben" . $zeile["life"] . "<br/>";
-
-                ?>
-
-
-
-        <form action="editDeck.php" method="post">
-            <select>
-            <?php
-                $sqlDeck = "SELECT deckname FROM Deck";
-                $sqlDeckResult = mysqli_query($sqlConnection, $sqlDeck);
-                while ($rowDeck = mysql_fetch_array($sqlDeckResult, MYSQL_ASSOC)) {
-                    echo "<option>".$rowDeck['deckname']."</option>";
-                }
-                ?>
-            </select>
-            <input class="btn btn-primary" type="submit" value="Zu einem Deck hinzufügen">
-
-        </form>
-
-
-
-
 
         <?php
             }
