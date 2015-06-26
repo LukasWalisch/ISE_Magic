@@ -47,6 +47,11 @@
         $searchArray = $_POST["directedSearchArray"];
     }
     $deckName = $_POST["selectedDeck"];
+    if ( isset ( $_POST["saveDeck"]))
+    {
+        include "PHP_Functions/saveDeck.php";
+    }
+
     if ( isset( $_POST['createDeck'] ) )
     {
         $conn = mysqli_connect("isemagic.duckdns.org", "lukas", "", "isemagic");
@@ -176,6 +181,7 @@
                     </select>
                     <input type="hidden" name="cardCounter" value="<?php echo $cardCounter?>"/></br>
                     Anzahl Karten: <?php echo $cardCounter ?> </br>
+                    <input type="submit" name="saveDeck" value="Speichere Deck">
                 </div>
                     </form>
             </div>
