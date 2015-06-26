@@ -34,10 +34,10 @@
         {
             ?>
             <div class="alert alert-info" role="alert">
-                Keine Ergebnisse
+                Keine Karten gefunden.
             </div>
             <?php
-            die("Keine Ergebnise");
+            die("Keine Ergebnisse");
         }
         while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC))
         {
@@ -134,6 +134,7 @@
         }
 
         ?>
+
     </div>
 
 

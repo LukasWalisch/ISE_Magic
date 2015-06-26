@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a class="data-nav-item" href="newCard.php">Karte eintragen</a></li>
-                        <li><a class="data-nav-item" href="#">Karten anzeigen</a></li>
+                        <li><a class="data-nav-item" href="showCards.php">Karten anzeigen</a></li>
                         <li><a class="data-nav-item" href="deckbuilder.php">Deckbuilder</a></li>
                         <li><a class="data-nav-item" href="info.php">Info</a></li>
                     </ul>
