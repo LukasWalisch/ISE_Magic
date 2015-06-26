@@ -77,7 +77,7 @@
                                 <h3>Kartentyp:</h3>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="checkType[]" value="Creatur"> Kreatur
+                                        <input type="checkbox" name="checkType[]" value="Creature"> Kreatur
                                     </label>
                                 </div>
                                 <div class="checkbox">
@@ -96,7 +96,7 @@
                                         <p> </p>
                                     </label>
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Suchen">
+                                <input class="btn btn-primary btn-block" type="submit" value="Suchen">
                             </div>
 
                         </div>
