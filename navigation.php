@@ -36,42 +36,48 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <h3>Farbe:</h3>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="Red"> Rot
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="Blue"> Blau
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="Black"> Schwarz
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="Green"> Grün
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="White"> Weiß
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="checkColor[]" value="Colorless"> Farblos
-                                    </label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="Red"><img src="bilder/Red_Mana.png" alt="redmana">
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="Blue"><img src="bilder/Blue_Mana.png" alt="bluemana">
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="Black"><img src="bilder/Black_Mana.png" alt="blackmana">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="Green"><img src="bilder/Green_Mana.png" alt="greenmana">
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="White"><img src="bilder/White_Mana.png" alt="whitemana">
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="checkColor[]" value="Colorless"><img src="bilder/Colorless_Mana.png" alt="colorlessmana">
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-6">
                                 <h3>Kartentyp:</h3>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="checkType[]" value="Creatur"> Kreatur
+                                        <input type="checkbox" name="checkType[]" value="Creature"> Kreatur
                                     </label>
                                 </div>
                                 <div class="checkbox">
@@ -90,7 +96,7 @@
                                         <p> </p>
                                     </label>
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Suchen">
+                                <input class="btn btn-primary btn-block" type="submit" value="Suchen">
                             </div>
 
                         </div>

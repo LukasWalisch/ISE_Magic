@@ -48,15 +48,19 @@
             <form class="form-group" action="editDeck.php" method="post">
                 <h3>Neues Deck hinzufügen</h3>
 
-                <div class="col-xs-3">
-                    <input type="text" name="deckName" class="form-control" placeholder="Deckname">
-                    <br>
-                    <input type="text" name="description" class="form-control" placeholder="Beschreibung">
-                    <br>
-                    <input type="submit" name = "createDeck" value="Erstellen" class="btn btn-primary" >
+                <div class="row">
+                    <div class="col-xs-4">
+                        <input type="text" name="deckName" class="form-control" placeholder="Deckname">
+                        <br>
+                        <input type="text" name="description" class="form-control" placeholder="Beschreibung">
+                        <br>
+                        <input type="submit" name = "createDeck" value="Erstellen" class="btn btn-primary" >
+                    </div>
+
+                    <div class="col-xs-8">
+
+                    </div>
                 </div>
-
-
 
             </form>
 
