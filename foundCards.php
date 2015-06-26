@@ -20,9 +20,6 @@
 
     <div class="container field">
         <h2 class="item-title">Gefundene Karten</h2>
-
-
-
         <?php
 
         $checkType = $_POST["checkType"];
@@ -34,10 +31,10 @@
         {
             ?>
             <div class="alert alert-info" role="alert">
-                Keine Ergebnisse
+                Keine Karten gefunden.
             </div>
             <?php
-            die("Keine Ergebnise");
+            die("Keine Ergebnisse");
         }
         while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC))
         {
@@ -108,9 +105,8 @@
                                 <div class="dropdown ">
                                     <select class="btn btn-default btn-lg dropdown-toggle">
                                     <?php
-                                        $sqlDeck = "SELECT deckname FROM Deck";
-                                        $sqlDeckResult = mysqli_query($sqlConnection, $sqlDeck);
-                                        while ($rowDeck = mysql_fetch_array($sqlDeckResult, MYSQL_ASSOC)) {
+                                        include "PHP_Functions/searchDeck.php";
+                                        while ($rowDeck = mysql_fetch_array($deckFoundQuery, MYSQL_ASSOC)) {
                                             echo "<option>".$rowDeck['deckname']."</option>";
                                         }
                                     ?>
@@ -134,6 +130,7 @@
         }
 
         ?>
+
     </div>
 
 

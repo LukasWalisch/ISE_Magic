@@ -21,6 +21,15 @@
 
     <?php include_once "header.php"; ?>
     <?php
+    $searchArray = array();
+    $deckArray = $_POST["directedDeckArray"];
+    if ( isset ( $_POST["addCardSubmit"]))
+    {
+        $cardCounter = $_POST["cardCounter"];
+        $cardCounter += 1;
+        if (!(empty($_POST["cardSelect"]))) $deckArray[] =  $_POST["cardSelect"];
+        $searchArray = $_POST["directedSearchArray"];
+    }
     $deckName = $_POST["selectedDeck"];
     if ( isset( $_POST['createDeck'] ) )
     {
@@ -33,7 +42,6 @@
         $description = $_POST["description"];
         $sqlDeckQuery = "INSERT INTO Deck(deckname, description) VALUES ('$deckName','$description')";
         mysqli_query($conn, $sqlDeckQuery);
-        echo "HHUHUHUH";
 
     }
     ?>
@@ -44,9 +52,8 @@
                 <?php
                 if ( isset( $_POST['submitSearch'] ) )
                 {
-                    $searchArray = array();
                     $checkType = $_POST["checkType"];
-                    $nameString = $_POST["nameString"];
+                    $nameString = $_POST["searchName"];
                     $checkColor = $_POST["checkColor"]; //Array
 
                     include "PHP_Functions/searchCard.php"; //Returns cardFoundQuery.
@@ -82,52 +89,79 @@
                 ?>
                 <!-- ALLE KARTEN ANZEIGEN -->
                 <div>
-                    <select style="width: 300px" name="cardSelect" size="20">
+                    <form action="editDeck.php" method="post">
+                        <select style="width: 300px" name="cardSelect" size="20">
+                            <?php
+                                foreach ($searchArray as $singleResult)
+                                {
+                                    echo "<option>";
+                                    echo $singleResult;
+                                    echo "</option>";
+                                }
+                            ?>
+
+                        </select>
                         <?php
-                            foreach ($searchArray as $singleResult)
+                            foreach ($deckArray as $singleDeck)
                             {
-                                echo "<option>";
-                                echo $singleResult;
-                                echo "</option>";
+                                ?>
+                                <input type="hidden" name="directedDeckArray[]" value="<?php echo $singleDeck; ?>"/>
+                                <?php
+                            }
+                            foreach ($searchArray as $singleSearch)
+                            {
+                                ?>
+                                <input type="hidden" name="directedSearchArray[]" value="<?php echo $singleSearch; ?>"/>
+                                <?php
                             }
                         ?>
 
-                    </select>
                 </div>
-                <form action="editDeck.php" method="post">
-
                     <div class=col-xs-6">
                         <h4>Name:</h4>
                         <input type="text" name="searchName">
                         <h4>Farbe:</h4>
-                        <input type="checkbox" name="checkColor[]" value="Red"> Rot
-                        <input type="checkbox" name="checkColor[]" value="Blue"> Blau
-                        <input type="checkbox" name="checkColor[]" value="Black"> Schwarz
-                        <input type="checkbox" name="checkColor[]" value="Green"> Grün
-                        <input type="checkbox" name="checkColor[]" value="White"> Weiß
-                        <input type="checkbox" name="checkColor[]" value="Colorless"> Farblos
+                        <input type="checkbox" name="checkColor[]" value="red"> Rot
+                        <input type="checkbox" name="checkColor[]" value="blue"> Blau
+                        <input type="checkbox" name="checkColor[]" value="black"> Schwarz
+                        <input type="checkbox" name="checkColor[]" value="green"> Grün
+                        <input type="checkbox" name="checkColor[]" value="white"> Weiß
+                        <input type="checkbox" name="checkColor[]" value="colorless"> Farblos
                         <br/>
                         <h4>Kartentyp:</h4>
-                        <input type="checkbox" name="checkType[]" value="Creatur"> Kreatur
+                        <input type="checkbox" name="checkType[]" value="Creature"> Kreatur
                         <input type="checkbox" name="checkType[]" value="Spell"> Zauber
                         <input type="checkbox" name="checkType[]" value="Planeswalker"> Planeswalker
                         <input type="checkbox" name="checkType[]" value="Land"> Land <br/>
+                        <input type="hidden" name="selectedDeck" value="<?php echo $deckName?>">
                         <input type="submit" value="Suchen" name="submitSearch">
                     </div>
-                </form>
+
             </div>
             <div class="col-xs-2">
                 <!-- BUTTONS -->
-                test 2
+                <input type="submit" value=">>" name="addCardSubmit">
+                <input type="submit" value="<<" name="removeCardSubmit">
+
             </div>
             <div class="col-xs-5">
                 <!-- DECKS -->
                 <div>
-                    <select style="width: 300px" name="cardSelect" size="20">
-
+                    <select style="width: 300px" name="cardInDeckSelect" size="20">
+                        <?php
+                        foreach ($deckArray as $singleResult)
+                        {
+                            echo "<option>";
+                            echo $singleResult;
+                            echo "</option>";
+                        }
+                        ?>
 
                     </select>
+                    <input type="hidden" name="cardCounter" value="<?php echo $cardCounter?>"/></br>
+                    Anzahl Karten: <?php echo $cardCounter ?> </br>
                 </div>
+                    </form>
             </div>
         </div>
 
