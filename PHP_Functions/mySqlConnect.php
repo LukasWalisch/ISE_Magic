@@ -12,7 +12,7 @@ $dbName = "isemagic";
 
 // Verbindung zum mySQL Server isemagic.duckdns.org
 $sqlConnection = new mysqli($servername, $username, $password, $dbName);
-if ($conn->connect_error) {
+if ($sqlConnection->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 

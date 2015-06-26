@@ -51,7 +51,11 @@
     {
         include "PHP_Functions/saveDeck.php";
     }
-
+    if ( isset ($_POST["updateDeck"]))
+    {
+        $deckArray = array();
+        include "PHP_Functions/loadDeck.php";
+    }
     if ( isset( $_POST['createDeck'] ) )
     {
         $conn = mysqli_connect("isemagic.duckdns.org", "lukas", "", "isemagic");
@@ -67,7 +71,7 @@
     }
     ?>
     <div class="container field">
-        <h2 class="item-title">Deckname: <?php echo $_POST["selectedDeck"]?></h2>
+        <h2 class="item-title">Deckname: <?php echo $deckName?></h2>
         <div class="row">
             <div class="col-xs-5">
                 <?php

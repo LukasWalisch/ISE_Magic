@@ -223,8 +223,9 @@ if (isset($_POST["submit"]))
 
         foreach($postAbilities as $ability)
         {
+            echo "Beschreibung: " . $ability . " cardname: " . $postCardname;
             $abilityQuery = "INSERT INTO Ability (description, cardname) VALUES ('$ability', '$postCardname')";
-            mysql_query($conn, $abilityQuery);
+            mysqli_query($conn, $abilityQuery);
         }
 
         $insertSuccess = "true"; // Flag das mir angibt ob die speicherung erfolgt ist

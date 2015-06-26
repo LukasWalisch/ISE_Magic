@@ -21,7 +21,15 @@
     <div class="container field">
         <h2 class="item-title">Gefundene Karten</h2>
         <?php
-
+        include "PHP_Functions/mySqlConnect.php";
+        $sqlAbilityQuery = "SELECT * FROM Ability";
+        $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbilityQuery);
+        $foundDecks = array();
+        include "PHP_Functions/searchDeck.php";
+        while ($rowDeck = mysqli_fetch_array($deckFoundQuery, MYSQL_ASSOC))
+        {
+            $foundDecks[] = $rowDeck["deckname"];
+        }
         $checkType = $_POST["checkType"];
         $nameString = $_POST["nameString"];
         $checkColor = $_POST["checkColor"]; //Array
@@ -63,11 +71,11 @@
             if ($nameString == "" || strpos($zeile["name"],$nameString) !== false)
             {
                 $typeString = "";
-                if ($zeile["legendary"] == 0)
+                if ($zeile["legendary"] == "Ja")
                 {
-                    $typeString .= "Legendary";
+                    $typeString .= "Legendary ";
                 }
-                if ($zeile["cardtype"] == "Spell") $typeString .= $zeile["Spelltype"];
+                if ($zeile["cardtype"] == "Spell") $typeString .= $zeile["spelltype"];
                 else $typeString .= $zeile["cardtype"];
                 ?>
 
@@ -79,7 +87,7 @@
                         <ul class="list-group">
                             <li class="list-group-item"><h4><?php echo $zeile["name"] ?></h4></li>
                             <li class="list-group-item">
-                                <?php echo $typeString ?>
+                                <?php echo $typeString ?><br/>
                                     Rarität: <?php echo $zeile["rarity"] ?><br/>
                                     Edition: <?php echo $zeile["edition"] ?><br/>
                                     Manakosten:
@@ -92,18 +100,27 @@
                                             if ($zeile["colorless"] > 0) echo $zeile["colorless"] . "Colorless  ";
                                             ?>
                                             </br>
-                                            Fähigkeiten:
+                                            Fähigkeiten:<br/>
                                                         <?php
-                                                        $sqlAbility = "SELECT * FROM Ability WHERE cardname =" . $zeile["name"];
-                                                        $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbility);
-                                                        while ($row = mysql_fetch_array($sqlAbilityResult, MYSQL_ASSOC))
+                                                        $dynCardName = $zeile["name"];
+                                                        /*include "PHP_Functions/MySqlConnect.php";
+                                                        $sqlAbilityQuery = "SELECT description FROM Ability WHERE cardname ='$dynCardName'";
+                                                        $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbilityQuery);*/
+                                                        $countAbility = 1;
+                                                        foreach ($sqlAbilityResult as $SingleAbilityResult)
                                                         {
-                                                            echo $row["description"];
+
+                                                            if ($SingleAbilityResult["cardname"] == $dynCardName)
+                                                            {
+                                                                echo $countAbility . ". Fähigkeit: " . $SingleAbilityResult["description"];
+                                                                echo "<br/>";
+                                                                $countAbility += 1;
                                                         }
-                                                        if ($zeile["Cardtype"] == "Creature")
+                                                        }
+                                                        if ($zeile["cardtype"] == "Creature")
                                                         {
                                                         ?>
-                                                            Statische Effekte: <?php echo $zeile["staticeffects"] ?>
+                                                            Statische Effekte: <?php echo $zeile["staticeffects"] ?><br/>
                                                             Stärke: <?php echo $zeile["attack"] ?><br/>
                                                             Widerstandskraft: <?php echo $zeile["defense"] ?><br/>
                                                         <?php
@@ -113,9 +130,9 @@
                                 <div class="dropdown ">
                                     <select class="btn btn-default btn-lg dropdown-toggle">
                                     <?php
-                                        include "PHP_Functions/searchDeck.php";
-                                        while ($rowDeck = mysql_fetch_array($deckFoundQuery, MYSQL_ASSOC)) {
-                                            echo "<option>".$rowDeck['deckname']."</option>";
+                                        foreach ($foundDecks as $foundSingleDeck)
+                                        {
+                                            echo "<option>" . $foundSingleDeck . "</option>";
                                         }
                                     ?>
                                     </select>

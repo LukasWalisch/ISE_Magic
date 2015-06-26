@@ -41,7 +41,7 @@
                     </select>
                 </div>
                 <br>
-                <input class="btn btn-primary" type="submit" value="Bearbeiten">
+                <input class="btn btn-primary" type="submit" value="Bearbeiten" name="updateDeck">
             </form>
 
             <!-- NEUES DECK HINZUFUEGEN -->
