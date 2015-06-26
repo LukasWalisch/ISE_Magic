@@ -122,14 +122,14 @@
                 ?>
 
                 Zaubertyp: <select name="spellType">
-                    <option>Spontanzauber</option>
-                    <option>Verzauberung</option>
-                    <option>Hexerei</option>
-                    <option>Verzauberung - Aura</option>
-                    <option>Artefakt</option>
-                </select>
+                <option>Spontanzauber</option>
+                <option>Verzauberung</option>
+                <option>Hexerei</option>
+                <option>Verzauberung - Aura</option>
+                <option>Artefakt</option>
+            </select>
 
-                <?php
+            <?php
             }
 
             if ($_POST["cardType"] == "Planeswalker")
@@ -138,7 +138,7 @@
 
                 Lebenspunkte: <input type="text" name="life">
 
-                <?php
+            <?php
             }
 
             for($count = 1; $count <= $_POST["Number"]; $count++)

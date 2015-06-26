@@ -23,11 +23,27 @@
     <?php
     $searchArray = array();
     $deckArray = $_POST["directedDeckArray"];
+    if ( isset ( $_POST["removeCardSubmit"]))
+    {
+        $cardCounter = $_POST["cardCounter"];
+        if (!(empty($_POST["cardInDeckSelect"])))
+        {
+            $cardCounter = $_POST["cardCounter"];
+            $cardCounter -= 1;
+            if (($key = array_search($_POST["cardInDeckSelect"], $deckArray)) !== false) {
+                unset($deckArray[$key]);
+            }
+        }
+        $searchArray = $_POST["directedSearchArray"];
+    }
     if ( isset ( $_POST["addCardSubmit"]))
     {
         $cardCounter = $_POST["cardCounter"];
-        $cardCounter += 1;
-        if (!(empty($_POST["cardSelect"]))) $deckArray[] =  $_POST["cardSelect"];
+        if (!(empty($_POST["cardSelect"])))
+        {
+            $cardCounter += 1;
+            $deckArray[] = $_POST["cardSelect"];
+        }
         $searchArray = $_POST["directedSearchArray"];
     }
     $deckName = $_POST["selectedDeck"];
@@ -140,7 +156,7 @@
             </div>
             <div class="col-xs-2">
                 <!-- BUTTONS -->
-                <input type="submit" value=">>" name="addCardSubmit">
+                <input type="submit" value=">>" name="addCardSubmit"></br>
                 <input type="submit" value="<<" name="removeCardSubmit">
 
             </div>
