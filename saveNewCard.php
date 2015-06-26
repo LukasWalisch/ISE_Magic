@@ -85,8 +85,8 @@
                         <input class="form-control mana-font-size" type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
                     </div>
 
-                    <input type="hidden" name="cardType" value="<?php $_POST["cardType"] ?>"> <!-- Weiterleitung einer Variable an das nächste Form -->
-                    <input type="hidden" name="Number" value="<?php $_POST["Number"] ?>">
+                    <input type="hidden" name="cardType" value="<?php echo $_POST["cardType"] ?>"> <!-- Weiterleitung einer Variable an das nächste Form -->
+                    <input type="hidden" name="Number" value="<?php echo $_POST["Number"] ?>">
                 </div>
 
                 <?php
@@ -179,6 +179,8 @@
         if ($postLegendary == "")
             $postLegendary = "nein";
 
+        $insertSuccess = "";
+
         if($postCardname == "")
         {
             ?>
@@ -188,7 +190,7 @@
             </div>
 
             <?php
-            $insertSuccess = false;
+            $insertSuccess = "false";
         }
         else
         {
@@ -197,15 +199,17 @@
             mysqli_query($conn, $query);
             $insertSuccess = "true"; // Flag das mir angibt ob die speicherung erfolgt ist
             echo "erfolgreich gespeichert";
-            $insertSuccess = true;
+            $insertSuccess = "true";
         }
 
-        if ($postCardType == "Creature" and $insertSuccess == true)
+        if ($postCardType == "Creature" and $insertSuccess == "true")
         {
             $postAttack = $_POST["attack"];
             $postDefense = $_POST["defense"];
-            $staticEffects = $_POST["staticEffects[]"];
+            $staticEffects = $_POST["staticEffects"];
+
             $staticEffectString = implode(", ", $staticEffects); // verwandelt ein array in einen String
+            echo "TESTSTRING: " . $staticEffectString; //TEST
 
             $updateQuery  = "UPDATE Test SET attack = '$postAttack' WHERE name = '$postCardname'";
             mysqli_query($conn, $updateQuery);
