@@ -158,22 +158,11 @@
         $postRed = $_POST["redTextField"];
         $postColorless = $_POST["colorlessTextField"];
 
-        $manacostQuery = "INSERT INTO Manacost (red, blue, green, white, black, colorless) VALUES ('$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
-
-        mysqli_query($conn, $manacostQuery);
-
-        // Letzter eintrag ist die manacost_id der neuen karte
-        $maxManacostQuery = "SELECT MAX(ID) AS ID FROM Manacost";
-
-        // ein einzelens result wird in eine variable gespeichert
-        $result = mysqli_query($conn, $maxManacostQuery);
-
-        $manacostID = mysqli_fetch_assoc($result)["ID"];
-
         $postCardType = $_POST["cardType"];
         $postCardname = $_POST["cardname"];
         $postRarity = $_POST["rarity"];
         $postLegendary = $_POST["legendary"];
+        $postAbilities = $_POST["abilities"];
 
         // wenn nicht ausgewählt dann speichere "nein" in die Datenbank
         if ($postLegendary == "")
@@ -194,9 +183,26 @@
         }
         else
         {
-            $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
+            $manacostQuery = "INSERT INTO Manacost (red, blue, green, white, black, colorless) VALUES ('$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
+            mysqli_query($conn, $manacostQuery);
 
+            // Letzter eintrag ist die manacost_id der neuen karte
+            $maxManacostQuery = "SELECT MAX(ID) AS ID FROM Manacost";
+
+            // ein einzelens result wird in eine variable gespeichert
+            $result = mysqli_query($conn, $maxManacostQuery);
+
+            $manacostID = mysqli_fetch_assoc($result)["ID"];
+
+            $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
             mysqli_query($conn, $query);
+
+            foreach($postAbilities as $ability)
+            {
+                $query = "INSERT INTO Ability (description, cardname) VALUES ('$ability', $postCardname)";
+                mysql_query($conn, $query);
+            }
+
             $insertSuccess = "true"; // Flag das mir angibt ob die speicherung erfolgt ist
             echo "erfolgreich gespeichert";
             $insertSuccess = "true";
