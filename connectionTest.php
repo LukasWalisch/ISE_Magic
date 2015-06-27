@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Test</title>
+    <title>Card</title>
 </head>
 <body>
 <?php
@@ -17,8 +17,8 @@ if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
     echo 'we gots it';
 }
 
-$servername = "isemagic.duckdns.org";
-$username = "lukas";
+$servername = "localhost";
+$username = "root";
 $password = "";
 
 // Create connection

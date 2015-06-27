@@ -169,7 +169,7 @@
 if (isset($_POST["submit"]))
 {
     // Create connection
-    $conn = mysqli_connect("isemagic.duckdns.org", "lukas", "", "isemagic");
+    $conn = mysqli_connect("localhost", "root", "", "isemagic");
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -218,7 +218,7 @@ if (isset($_POST["submit"]))
 
         $manacostID = mysqli_fetch_assoc($result)["ID"];
 
-        $query = "INSERT INTO Test (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
+        $query = "INSERT INTO Card (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
         mysqli_query($conn, $query);
 
         foreach($postAbilities as $ability)
@@ -242,13 +242,13 @@ if (isset($_POST["submit"]))
         $staticEffectString = implode(", ", $staticEffects); // verwandelt ein array in einen String
         echo "TESTSTRING: " . $staticEffectString; //TEST
 
-        $updateQuery  = "UPDATE Test SET attack = '$postAttack' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET attack = '$postAttack' WHERE name = '$postCardname'";
         mysqli_query($conn, $updateQuery);
 
-        $updateQuery  = "UPDATE Test SET defense = '$postDefense' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET defense = '$postDefense' WHERE name = '$postCardname'";
         mysqli_query($conn, $updateQuery);
 
-        $updateQuery  = "UPDATE Test SET staticeffects = '$staticEffectString' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET staticeffects = '$staticEffectString' WHERE name = '$postCardname'";
         mysqli_query($conn, $updateQuery);
     }
 
@@ -256,13 +256,13 @@ if (isset($_POST["submit"]))
     {
         echo "TEST!!!";
         $postSpellType = $_POST["spellType"];
-        $updateQuery = "UPDATE Test SET spelltype = '$postSpellType' WHERE name = '$postCardname'";
+        $updateQuery = "UPDATE Card SET spelltype = '$postSpellType' WHERE name = '$postCardname'";
     }
 
     if ($postCardType == "Planeswalker" and $insertSuccess == "true")
     {
         $postLife = $_POST["life"];
-        $updateQuery = "UPDATE Test SET life = '$postLife' WHERE name = '$postCardname'";
+        $updateQuery = "UPDATE Card SET life = '$postLife' WHERE name = '$postCardname'";
     }
 
 

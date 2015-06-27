@@ -6,8 +6,8 @@
  * Time: 11:37
  */
 
-$servername = "isemagic.duckdns.org";
-$username = "lukas";
+$servername = "localhost";
+$username = "root";
 $password = "";
 $dbname = "isemagic";
 

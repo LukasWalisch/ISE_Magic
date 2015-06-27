@@ -61,7 +61,7 @@
 if (isset($_POST["submit"]))
 {
     // Create connection
-    $conn = mysqli_connect("isemagic.duckdns.org", "lukas", "", "isemagic");
+    $conn = mysqli_connect("localhost", "root", "", "isemagic");
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
