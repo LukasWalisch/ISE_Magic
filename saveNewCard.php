@@ -243,8 +243,6 @@ if (isset($_POST["submit"]))
         }
 
         $insertSuccess = "true"; // Flag das mir angibt ob die speicherung erfolgt ist
-        echo "erfolgreich gespeichert";
-        $insertSuccess = "true";
     }
 
     if ($postCardType == "Creature" and $insertSuccess == "true")
@@ -254,7 +252,6 @@ if (isset($_POST["submit"]))
         $staticEffects = $_POST["staticEffects"];
 
         $staticEffectString = implode(", ", $staticEffects); // verwandelt ein array in einen String
-        echo "TESTSTRING: " . $staticEffectString; //TEST
 
         $updateQuery  = "UPDATE Card SET attack = '$postAttack' WHERE name = '$postCardname'";
         mysqli_query($conn, $updateQuery);
@@ -268,15 +265,16 @@ if (isset($_POST["submit"]))
 
     if ($postCardType == "Spell" and $insertSuccess == "true")
     {
-        echo "TEST!!!";
         $postSpellType = $_POST["spellType"];
         $updateQuery = "UPDATE Card SET spelltype = '$postSpellType' WHERE name = '$postCardname'";
+        mysqli_query($conn, $updateQuery);
     }
 
     if ($postCardType == "Planeswalker" and $insertSuccess == "true")
     {
         $postLife = $_POST["life"];
         $updateQuery = "UPDATE Card SET life = '$postLife' WHERE name = '$postCardname'";
+        mysqli_query($conn, $updateQuery);
     }
 
 
