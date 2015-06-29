@@ -179,7 +179,6 @@
 
 <?php
 
-
 if (isset($_POST["submit"]))
 {
     // Create connection

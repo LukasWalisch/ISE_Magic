@@ -18,9 +18,10 @@
 </head>
 <body>
 
+    <input type="hidden" value="<?php echo $_POST["selectedDeck"] ?>" name="selectedDeck">
 
-    <?php include_once "header.php"; ?>
-    <?php
+    <?php include_once "header.php";
+
     $searchArray = array();
     $deckArray = $_POST["directedDeckArray"];
     if ( isset ( $_POST["removeCardSubmit"]))
@@ -47,6 +48,7 @@
         $searchArray = $_POST["directedSearchArray"];
     }
     $deckName = $_POST["selectedDeck"];
+
     if ( isset ( $_POST["saveDeck"]))
     {
         include "PHP_Functions/saveDeck.php";
@@ -71,9 +73,10 @@
     }
     ?>
     <div class="container field">
-        <h2 class="item-title">Deckname: <?php echo $deckName?></h2>
+        <h2 class="item-title">Deckname: <?php echo $deckName ?></h2>
         <div class="row">
             <div class="col-xs-5">
+                <h4>Vorhandene Karten</h4>
                 <?php
                 if ( isset( $_POST['submitSearch'] ) )
                 {
@@ -115,7 +118,7 @@
                 <!-- ALLE KARTEN ANZEIGEN -->
                 <div>
                     <form action="editDeck.php" method="post">
-                        <select style="width: 300px" name="cardSelect" size="20">
+                        <select class="form-control" style="width: 300px" name="cardSelect" size="20">
                             <?php
                                 foreach ($searchArray as $singleResult)
                                 {
@@ -144,35 +147,95 @@
                 </div>
                     <div class=col-xs-6">
                         <h4>Name:</h4>
-                        <input type="text" name="searchName">
+
+                        <input class="form-control" type="text" name="searchName" style="width: 300px">
+
+                        <br>
                         <h4>Farbe:</h4>
-                        <input type="checkbox" name="checkColor[]" value="red"> Rot
-                        <input type="checkbox" name="checkColor[]" value="blue"> Blau
-                        <input type="checkbox" name="checkColor[]" value="black"> Schwarz
-                        <input type="checkbox" name="checkColor[]" value="green"> Grün
-                        <input type="checkbox" name="checkColor[]" value="white"> Weiß
-                        <input type="checkbox" name="checkColor[]" value="colorless"> Farblos
-                        <br/>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="red"><img src="bilder/Red_Mana.png" alt="redmana">
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="blue"><img src="bilder/Blue_Mana.png" alt="bluemana">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="black"><img src="bilder/Black_Mana.png" alt="blackmana">
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="green"><img src="bilder/Green_Mana.png" alt="greenmana">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="white"><img src="bilder/White_Mana.png" alt="whitemana">
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkColor[]" value="colorless"><img src="bilder/Colorless_Mana.png" alt="colorlessmana" width="27" height="auto">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                         <h4>Kartentyp:</h4>
-                        <input type="checkbox" name="checkType[]" value="Creature"> Kreatur
-                        <input type="checkbox" name="checkType[]" value="Spell"> Zauber
-                        <input type="checkbox" name="checkType[]" value="Planeswalker"> Planeswalker
-                        <input type="checkbox" name="checkType[]" value="Land"> Land <br/>
-                        <input type="hidden" name="selectedDeck" value="<?php echo $deckName?>">
-                        <input type="submit" value="Suchen" name="submitSearch">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Creature"> Kreatur
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Spell"> Zauber
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Planeswalker"> Planeswalker
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="checkType[]" value="Land"> Land
+                                        <p> </p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input class="btn btn-primary" type="submit" value="Suchen" name="submitSearch">
                     </div>
 
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-1" style="margin-top: 3em">
                 <!-- BUTTONS -->
-                <input type="submit" value=">>" name="addCardSubmit"></br>
-                <input type="submit" value="<<" name="removeCardSubmit">
+
+                <input class="btn btn-default" type="submit" value=">>" name="addCardSubmit"><br>
+                <input class="btn btn-default" type="submit" value="<<" name="removeCardSubmit">
 
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-5 col-md-offset-1">
                 <!-- DECKS -->
+                <h4><?php echo $deckName?></h4>
                 <div>
-                    <select style="width: 300px" name="cardInDeckSelect" size="20">
+                    <select class="form-control" style="width: 300px" name="cardInDeckSelect" size="20">
                         <?php
                         foreach ($deckArray as $singleResult)
                         {
@@ -185,7 +248,8 @@
                     </select>
                     <input type="hidden" name="cardCounter" value="<?php echo $cardCounter?>"/></br>
                     Anzahl Karten: <?php echo $cardCounter ?> </br>
-                    <input type="submit" name="saveDeck" value="Speichere Deck">
+                    <br>
+                    <input class="btn btn-primary" type="submit" name="saveDeck" value="Speichere Deck">
                 </div>
                     </form>
             </div>
