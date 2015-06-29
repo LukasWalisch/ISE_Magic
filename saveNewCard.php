@@ -22,8 +22,22 @@
     <div class="col-xs-12 field">
         <h2 class="item-title">Karte eintragen</h2>
 
-        <h3>Neue Karte: <?php echo $_POST["cardType"] ?></h3>
-
+        <h2 style="color: brown"> <img src="bilder/rueckseite.jpeg" alt="rueckseite" width="40" height="auto">
+            <?php
+            if ($_POST["cardType"] == "Land"){
+                ?> Neues Land  <?php
+            }
+            if ($_POST["cardType"] == "Creature"){
+                ?> Neue Kreatur <?php
+            }
+            if ($_POST["cardType"] == "Spell"){
+                ?> Neuer Zauber <?php
+            }
+            if ($_POST["cardType"] == "Planeswalker"){
+                ?> Neuer Planeswalker <?php
+            }
+            ?>
+        </h2>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="row">
@@ -55,32 +69,32 @@
             <div class="row">
 
                 <div class="col-xs-1">
-                    <img onclick="incrementBlackMana()" src="bilder/Black_Mana.png" alt="blackmana">
+                    <img onclick="incrementBlackMana()" src="bilder/Black_Mana.png" alt="blackmana" width="40" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="blackTextField" name="blackTextField" readonly>
                 </div>
                 <div class="col-xs-1">
-                    <img onclick="incrementWhiteMana()" src="bilder/White_Mana.png" alt="whitemana">
+                    <img onclick="incrementWhiteMana()" src="bilder/White_Mana.png" alt="whitemana" width="40" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="whiteTextField" name="whiteTextField" readonly>
                 </div>
                 <div class="col-xs-1">
-                    <img onclick="incrementBlueMana()" src="bilder/Blue_Mana.png" alt="bluemana">
+                    <img onclick="incrementBlueMana()" src="bilder/Blue_Mana.png" alt="bluemana" width="40" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="blueTextField" name="blueTextField" readonly>
                 </div>
                 <div class="col-xs-1">
-                    <img onclick="incrementGreenMana()" src="bilder/Green_Mana.png" alt="greenmana">
+                    <img onclick="incrementGreenMana()" src="bilder/Green_Mana.png" alt="greenmana" width="40" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="greenTextField" name="greenTextField" readonly>
                 </div>
                 <div class="col-xs-1">
-                    <img onclick="incrementRedMana()" src="bilder/Red_Mana.png" alt="redmana">
+                    <img onclick="incrementRedMana()" src="bilder/Red_Mana.png" alt="redmana" width="40" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="redTextField" name="redTextField" readonly>
                 </div>
                 <div class="col-xs-1">
-                    <img onclick="incrementColorlessMana()">Colorless mana +</button>
+                    <img onclick="incrementColorlessMana()" src="bilder/Colorless_Mana.png" alt="colorlessmana" width="39" height="auto">
                     <br>
                     <input class="form-control mana-font-size" type="text" value="0" Id="colorlessTextField" name="colorlessTextField" readonly>
                 </div>
