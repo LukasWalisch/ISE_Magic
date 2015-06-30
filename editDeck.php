@@ -14,16 +14,19 @@
     <link href="bootstrap/main.css" rel="stylesheet">
 
 
-    <title>Neue Karte</title>
+    <title>Deck editor</title>
 </head>
 <body>
 
-    <input type="hidden" value="<?php echo $_POST["selectedDeck"] ?>" name="selectedDeck">
+
 
     <?php include_once "header.php";
 
-    $searchArray = array();
+    $searchArray = $_POST["directedSearchArray"];
     $deckArray = $_POST["directedDeckArray"];
+    $cardCounter = $_POST["cardCounter"];
+    $deckName = $_POST["selectedDeck"];
+    if (!$cardCounter) $cardCounter = 0;
     if ( isset ( $_POST["removeCardSubmit"]))
     {
         $cardCounter = $_POST["cardCounter"];
@@ -47,27 +50,45 @@
         }
         $searchArray = $_POST["directedSearchArray"];
     }
-    $deckName = $_POST["selectedDeck"];
+
 
     if ( isset ( $_POST["saveDeck"]))
     {
         include "PHP_Functions/saveDeck.php";
     }
+    //If a Deck was selected from deckbuilder, its loaded in this if Condition.
     if ( isset ($_POST["updateDeck"]))
     {
+        if (!$deckName)
+        {
+            ?>
+            <div class="container field" style="text-align: center">
+            <h4>Kein Deck ausgewählt, zurück zu Deckbuilder</h4>
+            <br/>
+                <form action="deckbuilder.php" method="post">
+
+                    <input class="btn btn-primary" type="submit" value="Zurück" style="margin-bottom: 2em">
+
+                </form>
+            </div>
+            <?php
+            include_once "footer.php";
+            die();
+        }
         $deckArray = array();
         include "PHP_Functions/loadDeck.php";
+        $deckName = $_POST["selectedDeck"];
     }
     if ( isset( $_POST['createDeck'] ) )
     {
         $conn = mysqli_connect("localhost", "root", "", "isemagic");
-        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
         $deckName = $_POST["deckName"];
         $description = $_POST["description"];
-        $sqlDeckQuery = "INSERT INTO Deck(deckname, description) VALUES ('$deckName','$description')";
+        $CardCounter = 0;
+        $sqlDeckQuery = "INSERT INTO Deck(deckname, description, creaturecount, spellcount, landcount, planeswalkercount, cardcount) VALUES ('$deckName','$description',0,0,0,0,0)";
         mysqli_query($conn, $sqlDeckQuery);
 
     }
@@ -85,13 +106,6 @@
                     $checkColor = $_POST["checkColor"]; //Array
 
                     include "PHP_Functions/searchCard.php"; //Returns cardFoundQuery.
-                    if(! $cardFoundQuery )
-                    {
-                        ?>
-                        <h2>Keine Ergebnise</h2>
-                        <?php
-                        die("Keine Ergebnise");
-                    }
                     while ($zeile = mysqli_fetch_array($cardFoundQuery, MYSQL_ASSOC))
                     {
                         $flag = true;
@@ -219,7 +233,8 @@
                                 </div>
                             </div>
                         </div>
-
+                        <input type="hidden" value="<?php echo $deckName ?>" name="selectedDeck">
+                        <input type="hidden" name="cardCounter" value="<?php echo $cardCounter?>"/>
                         <input class="btn btn-primary" type="submit" value="Suchen" name="submitSearch">
                     </div>
 
@@ -246,7 +261,7 @@
                         ?>
 
                     </select>
-                    <input type="hidden" name="cardCounter" value="<?php echo $cardCounter?>"/></br>
+                    </br>
                     Anzahl Karten: <?php echo $cardCounter ?> </br>
                     <br>
                     <input class="btn btn-primary" type="submit" name="saveDeck" value="Speichere Deck">
