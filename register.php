@@ -36,7 +36,7 @@
 
         </div>
         <div class="col-xs-5" id="login">
-            <form action="PHP_Functions/persistUser.php" method="post" class="form-signin">
+            <form action="register.php" method="post" class="form-signin">
                 <h3 class="form-signin-heading">Registrieren</h3>
                 <input type="text" name="username" class="form-control" placeholder="Username">
                 <br>
