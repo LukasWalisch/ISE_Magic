@@ -50,7 +50,7 @@
                 </div>
 
 
-                <h3>Wähle die Anzahl der Karteneffekte:</h3>
+                <h3>Wähle die Anzahl der Kartenfähigkeiten:</h3>
                 <div class="dropdown">
                     <select class="btn btn-default btn-lg dropdown-toggle" name="Number" size="1">
                         <option>0</option>
