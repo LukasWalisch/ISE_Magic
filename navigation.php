@@ -19,14 +19,34 @@
     <?php include_once "header.php"; ?>
 
     <?php
-    if ( isset ( $_POST["success"]))
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbName = "isemagic";
+
+
+    $sqlConnection = new mysqli($servername, $username, $password, $dbName);
+    if ($sqlConnection->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    if ( isset ( $_POST["deleteSubmit"]))
     {
-        $cardName = $_POST["cardname"];
+        $cardID = $_POST["cardID"];
+        $sqlQueryDeleteCard = "DELETE FROM Card WHERE card_ID='$cardID'";
+        mysqli_query($sqlConnection, $sqlQueryDeleteCard);
+        $sqlQueryDeleteConnection = "DELETE FROM card_deck WHERE card_ID='$cardID'";
+        mysqli_query($sqlConnection, $sqlQueryDeleteConnection);
+        //
+    }
+    if ( isset ( $_POST["deleteCardSubmit"]))
+    {
+        $cardID = $_POST["cardID"];
         $deckName = $_POST["selectedDeck"];
-        include "saveSingleCard.php";
-        ?>
-            <script>alert("<?php echo $_POST["success"] ?></script>
-        <?php
+        echo $cardID . " " . $deckName;
+        $sqlQuerySaveCard = "INSERT INTO card_deck (card_ID,deckname) VALUES ('$cardID', '$deckName')";
+        $sqlQueryIncrement = "UPDATE Deck SET cardcount = cardcount + 1 WHERE deckname='$deckName'";
+        mysqli_query($sqlConnection, $sqlQuerySaveCard);
+        mysqli_query($sqlConnection, $sqlQueryIncrement);
     }
     ?>
     <div class="container">

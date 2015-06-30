@@ -89,7 +89,6 @@
                             <li class="list-group-item">
                                 <?php echo $typeString ?><br/>
                                     Rarität: <?php echo $zeile["rarity"] ?><br/>
-                                    Edition: <?php echo $zeile["edition"] ?><br/>
                                     Manakosten:
                                             <?php
                                             if ($zeile["red"] > 0) echo $zeile["red"] . "Rot  ";
@@ -102,15 +101,15 @@
                                             </br>
                                             Fähigkeiten:<br/>
                                                         <?php
-                                                        $dynCardName = $zeile["name"];
-                                                        /*include "PHP_Functions/MySqlConnect.php";
-                                                        $sqlAbilityQuery = "SELECT description FROM Ability WHERE cardname ='$dynCardName'";
-                                                        $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbilityQuery);*/
+                                                        $dynCardName = $zeile["card_ID"];
+                                                        include "PHP_Functions/mySqlConnect.php";
+                                                        $sqlAbilityQuery = "SELECT * FROM Ability WHERE card_ID ='$dynCardName'";
+                                                        $sqlAbilityResult = mysqli_query($sqlConnection, $sqlAbilityQuery);
                                                         $countAbility = 1;
                                                         foreach ($sqlAbilityResult as $SingleAbilityResult)
                                                         {
 
-                                                            if ($SingleAbilityResult["cardname"] == $dynCardName)
+                                                            if ($SingleAbilityResult["card_ID"] == $dynCardName)
                                                             {
                                                                 echo $countAbility . ". Fähigkeit: " . $SingleAbilityResult["description"];
                                                                 echo "<br/>";
@@ -137,15 +136,13 @@
                                     ?>
                                     </select>
                                 </div>
-                                    <input type="hidden" value="success" name="success"/>
-                                    <input type="hidden" value="<?php echo $zeile["name"] ?>" name="cardname"/>
-                                <input class="btn btn-success" type="submit" value="Zu einem Deck hinzufügen">
+                                    <input type="hidden" value="<?php echo $zeile["card_ID"] ?>" name="cardID"/>
+                                <input class="btn btn-success" name="deleteCardSubmit" type="submit" value="Zu einem Deck hinzufügen">
 
                                 </form>
                                 <form action="navigation.php" method="post">
-                                    <input type="hidden" value="successDelete" name="successDelete"/>
-                                    <input type="hidden" value="<?php echo $zeile["name"] ?>" name="cardname"/>
-                                    <input class="btn btn-warning" type="submit" value="Karte löschen" style="float: right">
+                                    <input type="hidden" value="<?php echo $zeile["card_ID"] ?>" name="cardID"/>
+                                    <input class="btn btn-warning" name="deleteSubmit" type="submit" value="Karte löschen" style="float: right">
                                 </form>
                             </li>
 
