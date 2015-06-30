@@ -126,9 +126,9 @@
                                                         <?php
                                                         }elseif ($zeile["cardtype"] == "Planeswalker") echo "Planeswalker Leben" . $zeile["life"] . "<br/>";
                                                         ?>
-                                <form action="editDeck.php" method="post">
+                                <form action="navigation.php" method="post">
                                 <div class="dropdown ">
-                                    <select class="btn btn-default btn-lg dropdown-toggle">
+                                    <select class="btn btn-default btn-lg dropdown-toggle" name="selectedDeck">
                                     <?php
                                         foreach ($foundDecks as $foundSingleDeck)
                                         {
@@ -137,8 +137,15 @@
                                     ?>
                                     </select>
                                 </div>
+                                    <input type="hidden" value="success" name="success"/>
+                                    <input type="hidden" value="<?php echo $zeile["name"] ?>" name="cardname"/>
                                 <input class="btn btn-success" type="submit" value="Zu einem Deck hinzufügen">
 
+                                </form>
+                                <form action="navigation.php" method="post">
+                                    <input type="hidden" value="successDelete" name="successDelete"/>
+                                    <input type="hidden" value="<?php echo $zeile["name"] ?>" name="cardname"/>
+                                    <input class="btn btn-warning" type="submit" value="Karte löschen" style="float: right">
                                 </form>
                             </li>
 

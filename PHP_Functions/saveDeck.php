@@ -8,4 +8,5 @@ foreach ($deckArray as $singleDeckEntry)
     $sqlsave = "INSERT INTO card_deck(cardname,deckname) VALUES ('$singleDeckEntry','$deckName')";
     mysqli_query($sqlConnection, $sqlsave);
 }
-echo "Karte wurde gespeichert";
+$sqlSaveDeckQuery = "UPDATE Deck SET cardcount='$cardCounter' WHERE deckname='$deckName'";
+mysqli_query($sqlConnection, $sqlSaveDeckQuery);
