@@ -143,6 +143,8 @@
 
                                 </form>
                                 <form action="navigation.php" method="post">
+                                    <input type="hidden" value="successDelete" name="successDelete"/>
+                                    <input type="hidden" value="<?php echo $zeile["name"] ?>" name="cardname"/>
                                     <input class="btn btn-warning" type="submit" value="Karte löschen" style="float: right">
                                 </form>
                             </li>

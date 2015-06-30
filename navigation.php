@@ -18,6 +18,17 @@
 
     <?php include_once "header.php"; ?>
 
+    <?php
+    if ( isset ( $_POST["success"]))
+    {
+        $cardName = $_POST["cardname"];
+        $deckName = $_POST["selectedDeck"];
+        include "saveSingleCard.php";
+        ?>
+            <script>alert("<?php echo $_POST["success"] ?></script>
+        <?php
+    }
+    ?>
     <div class="container">
         <div class="col-xs-12 field">
 

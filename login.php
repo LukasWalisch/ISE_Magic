@@ -76,6 +76,10 @@ if (isset($_POST["submit"]))
 
     if(mysqli_num_rows($result) == 1)
     {
+        echo "username: " . $postUser;
+        session_start();
+        $_SESSION["username"] = $postUser;
+        echo "session content" . $_SESSION["username"];
         header("Location: navigation.php");
         die();
     }

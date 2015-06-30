@@ -62,13 +62,13 @@
         if (!$deckName)
         {
             ?>
-            <div class="container field" style="text-align: center">
-            <h4>Kein Deck ausgewählt, zurück zu Deckbuilder</h4>
+            <div class="container field">
+            <h4 style="text-align: center">Kein Deck ausgewählt, zurück zu Deckbuilder</h4>
             <br/>
                 <form action="deckbuilder.php" method="post">
-
-                    <input class="btn btn-primary" type="submit" value="Zurück" style="margin-bottom: 2em">
-
+                    <center>
+                    <input class="btn btn-primary" type="submit" value="Zurück"/>
+                        </center>
                 </form>
             </div>
             <?php

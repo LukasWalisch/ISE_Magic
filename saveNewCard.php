@@ -16,6 +16,13 @@
     <title>Neue Karte</title>
 </head>
 <body>
+<?php
+    session_start();
+    if ($_SESSION["username"]=="")
+    {
+        header("Location: index.html");
+    }
+?>
 <?php include_once "header.php"; ?>
 
 <div class="container">
@@ -300,24 +307,21 @@ if (isset($_POST["submit"]))
     }
     else
     {
-        $manacostQuery = "INSERT INTO Manacost (red, blue, green, white, black, colorless) VALUES ('$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
-        mysqli_query($conn, $manacostQuery);
-
-        // Letzter eintrag ist die manacost_id der neuen karte
-        $maxManacostQuery = "SELECT MAX(ID) AS ID FROM Manacost";
-
-        // ein einzelens result wird in eine variable gespeichert
-        $result = mysqli_query($conn, $maxManacostQuery);
-
-        $manacostID = mysqli_fetch_assoc($result)["ID"];
-
         $query = "INSERT INTO Card (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
         mysqli_query($conn, $query);
+
+        //cardID herausfinden
+        $query = "SELECT MAX(card_ID) as card_ID FROM Card";
+        $result = mysql_query($conn, $query);
+        $cardID = mysqli_fetch_assoc($result["cardID"]);
+
+        $manacostQuery = "INSERT INTO Manacost (card_ID, red, blue, green, white, black, colorless) VALUES ('$cardID', '$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
+        mysqli_query($conn, $manacostQuery);
 
         foreach($postAbilities as $ability)
         {
             echo "Beschreibung: " . $ability . " cardname: " . $postCardname;
-            $abilityQuery = "INSERT INTO Ability (description, cardname) VALUES ('$ability', '$postCardname')";
+            $abilityQuery = "INSERT INTO Ability (description, card_ID) VALUES ('$ability', '$cardID')";
             mysqli_query($conn, $abilityQuery);
         }
 
@@ -332,35 +336,32 @@ if (isset($_POST["submit"]))
 
         $staticEffectString = implode(", ", $staticEffects); // verwandelt ein array in einen String
 
-        $updateQuery  = "UPDATE Card SET attack = '$postAttack' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET attack = '$postAttack' WHERE card_ID = '$cardID'";
         mysqli_query($conn, $updateQuery);
 
-        $updateQuery  = "UPDATE Card SET defense = '$postDefense' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET defense = '$postDefense' WHERE card_ID = '$cardID'";
         mysqli_query($conn, $updateQuery);
 
-        $updateQuery  = "UPDATE Card SET staticeffects = '$staticEffectString' WHERE name = '$postCardname'";
+        $updateQuery  = "UPDATE Card SET staticeffects = '$staticEffectString' WHERE card_ID = '$cardID'";
         mysqli_query($conn, $updateQuery);
     }
 
     if ($postCardType == "Spell" and $insertSuccess == "true")
     {
         $postSpellType = $_POST["spellType"];
-        $updateQuery = "UPDATE Card SET spelltype = '$postSpellType' WHERE name = '$postCardname'";
+        $updateQuery = "UPDATE Card SET spelltype = '$postSpellType' WHERE card_ID = '$cardID'";
         mysqli_query($conn, $updateQuery);
     }
 
     if ($postCardType == "Planeswalker" and $insertSuccess == "true")
     {
         $postLife = $_POST["life"];
-        $updateQuery = "UPDATE Card SET life = '$postLife' WHERE name = '$postCardname'";
+        $updateQuery = "UPDATE Card SET life = '$postLife' WHERE card_ID = '$cardID'";
         mysqli_query($conn, $updateQuery);
     }
 
-
-
     mysqli_close($conn);
 }
-
 
 ?>
 
