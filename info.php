@@ -25,6 +25,10 @@
 
             <div class="list-group">
                 <div class="list-group-item">
+                    <h4 class="list-group-item-heading">Disclaimer</h4>
+                    <p class="list-group-item-text">Alle Bilder und Karten auf dieser Website sind Eigentum von Wizards of the Coast LLC.</p>
+                </div>
+                <div class="list-group-item">
                     <h4 class="list-group-item-heading">Beschreibung der Fähigkeiten</h4>
                     <p class="list-group-item-text">
                         Sollte eine Fähigkeit einer Karte Manakosten besitzen werden sie wie folgt eingetrage:
@@ -38,43 +42,13 @@
                     </ul>
                     </p>
                 </div>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">What is Bootstrap?</h4>
-                    <p class="list-group-item-text">Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of HTML and CSS based design template.</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">What is CSS?</h4>
-                    <p class="list-group-item-text">CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc.</p>
-                </a>
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">Disclaimer</h4>
+                    <p class="list-group-item-text">Alle Bilder und Karten auf dieser Website sind Eigentum von Wizards of the Coast LLC.</p>
+                </div>
             </div>
 
 
-            <dl>
-                <dt>
-                    Sollte eine Fähigkeit einer Karte Manakosten besitzen werden sie wie folgt eingetrage:
-                </dt>
-                <dd>
-                    <ul>
-                        <li>Pro farbiges Mana wird der Anfangsbuchstabe angegeben. <br/>
-                            (B = Black, U = Blue, R = Red, W = White, G = Green)</li>
-                        <li>Farbloses Mana wird mit der Zahl eingegeben.</li>
-                        <li>Soll die Karte dabei getappt werden, so wird ein ,T nach den Manakosten angegeben.</li>
-                        <li>Sind die Manakosten fertiggebaut wird noch ein : angehängt</br>
-                            Beispiel: 2 Rote Mana, 1 Farbloses und tappen -> "RR1,T: "</li>
-                    </ul>
-                </dd>
-            </dl>
-
-
-            Sollte eine Fähigkeit einer Karte Manakosten besitzen werden sie wie folgt eingetrage:<br/>
-            <ul>
-                <li>Pro farbiges Mana wird der Anfangsbuchstabe angegeben. <br/>
-                    (B = Black, U = Blue, R = Red, W = White, G = Green)</li>
-                <li>Farbloses Mana wird mit der Zahl eingegeben.</li>
-                <li>Soll die Karte dabei getappt werden, so wird ein ,T nach den Manakosten angegeben.</li>
-                <li>Sind die Manakosten fertiggebaut wird noch ein : angehängt</br>
-                    Beispiel: 2 Rote Mana, 1 Farbloses und tappen -> "RR1,T: "</li>
-            </ul>
 
 
         </div> 

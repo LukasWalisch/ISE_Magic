@@ -125,9 +125,9 @@
                                                         <?php
                                                         }elseif ($zeile["cardtype"] == "Planeswalker") echo "Planeswalker Leben" . $zeile["life"] . "<br/>";
                                                         ?>
-                                <form action="navigation.php" method="post">
+                                <form action="navigation.php" method="post" class="form-with-buttons">
                                 <div class="dropdown ">
-                                    <select class="btn btn-default btn-lg dropdown-toggle" name="selectedDeck">
+                                    <select class="btn btn-default dropdown-toggle" name="selectedDeck">
                                     <?php
                                         foreach ($foundDecks as $foundSingleDeck)
                                         {
@@ -137,12 +137,12 @@
                                     </select>
                                 </div>
                                     <input type="hidden" value="<?php echo $zeile["card_ID"] ?>" name="cardID"/>
-                                <input class="btn btn-success" name="deleteCardSubmit" type="submit" value="Zu einem Deck hinzufügen">
+                                <input class="btn btn-success " name="deleteCardSubmit" type="submit" value="Zu einem Deck hinzufügen" style="margin-left: auto">
 
                                 </form>
-                                <form action="navigation.php" method="post">
+                                <form action="navigation.php" method="post" class="form-with-buttons">
                                     <input type="hidden" value="<?php echo $zeile["card_ID"] ?>" name="cardID"/>
-                                    <input class="btn btn-warning" name="deleteSubmit" type="submit" value="Karte löschen" style="float: right">
+                                    <input class="btn btn-warning" name="deleteSubmit" type="submit" value="Karte löschen">
                                 </form>
                             </li>
 
