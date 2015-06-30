@@ -16,14 +16,11 @@
     <title>Neue Karte</title>
 </head>
 <body>
+
 <?php
-    session_start();
-    if ($_SESSION["username"]=="")
-    {
-        header("Location: index.html");
-    }
+include "checkLogin.php";
+include_once "header.php";
 ?>
-<?php include_once "header.php"; ?>
 
 <div class="container">
     <div class="col-xs-12 field">
@@ -282,6 +279,7 @@ if (isset($_POST["submit"]))
     $postRed = $_POST["redTextField"];
     $postColorless = $_POST["colorlessTextField"];
 
+    $sessionUsername = $_SESSION["username"];
     $postCardType = $_POST["cardType"];
     $postCardname = $_POST["cardname"];
     $postRarity = $_POST["rarity"];
@@ -307,13 +305,15 @@ if (isset($_POST["submit"]))
     }
     else
     {
-        $query = "INSERT INTO Card (name, rarity, legendary, manacost_ID, cardtype) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$manacostID', '$postCardType')";
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('$postCardname', '$postRarity', '$postLegendary', '$postCardType', '$sessionUsername')";
         mysqli_query($conn, $query);
 
         //cardID herausfinden
-        $query = "SELECT MAX(card_ID) as card_ID FROM Card";
-        $result = mysql_query($conn, $query);
-        $cardID = mysqli_fetch_assoc($result["cardID"]);
+        $query = "SELECT MAX(card_ID) AS card_ID FROM Card";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $cardID = $row["card_ID"];
+        echo "CardID: " . $cardID;
 
         $manacostQuery = "INSERT INTO Manacost (card_ID, red, blue, green, white, black, colorless) VALUES ('$cardID', '$postRed', '$postBlue', '$postGreen', '$postWhite', '$postBlack', '$postColorless')";
         mysqli_query($conn, $manacostQuery);

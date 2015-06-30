@@ -88,7 +88,9 @@
         $deckName = $_POST["deckName"];
         $description = $_POST["description"];
         $CardCounter = 0;
-        $sqlDeckQuery = "INSERT INTO Deck(deckname, description, creaturecount, spellcount, landcount, planeswalkercount, cardcount) VALUES ('$deckName','$description',0,0,0,0,0)";
+        session_start();
+        $username = $_SESSION["username"];
+        $sqlDeckQuery = "INSERT INTO Deck(deckname, description, creaturecount, spellcount, landcount, planeswalkercount, cardcount, username) VALUES ('$deckName','$description',0,0,0,0,0,'$username')";
         mysqli_query($conn, $sqlDeckQuery);
 
     }
