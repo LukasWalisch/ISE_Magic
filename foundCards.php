@@ -37,7 +37,7 @@
         include "PHP_Functions/searchCard.php"; //Returns cardFoundQuery.
 
         // ANZAHL DER TUPEL
-        $numberOfRows = mysqli_num_rows($cardFoundQuery);
+        $numberOfRows = 0;
         echo $numberOfRows;
 
 
@@ -68,6 +68,7 @@
                 if ($flag) continue;
             }
             if (!(empty($checkType)) && !(in_array($zeile["cardtype"], $checkType))) continue;
+            $numberOfRows +=1;
             if ($nameString == "" || strpos($zeile["name"],$nameString) !== false)
             {
                 $typeString = "";
@@ -126,7 +127,7 @@
                                                         }elseif ($zeile["cardtype"] == "Planeswalker") echo "Planeswalker Leben" . $zeile["life"] . "<br/>";
                                                         ?>
                                 <form action="navigation.php" method="post" class="form-with-buttons">
-                                <div class="dropdown ">
+                                <div class="dropdown " style="margin-bottom: 1em">
                                     <select class="btn btn-default dropdown-toggle" name="selectedDeck">
                                     <?php
                                         foreach ($foundDecks as $foundSingleDeck)
@@ -140,7 +141,7 @@
                                 <input class="btn btn-success " name="deleteCardSubmit" type="submit" value="Zu einem Deck hinzufügen" style="margin-left: auto">
 
                                 </form>
-                                <form action="navigation.php" method="post" class="form-with-buttons">
+                                <form action="navigation.php" method="post" class="form-with-buttons" style="right: auto">
                                     <input type="hidden" value="<?php echo $zeile["card_ID"] ?>" name="cardID"/>
                                     <input class="btn btn-warning" name="deleteSubmit" type="submit" value="Karte löschen">
                                 </form>
