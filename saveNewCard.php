@@ -47,26 +47,24 @@
         </h2>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <div class="row">
-                <div class="col-xs-6">
-                    <h3>Kartenname</h3>
-                    <input class="form-control" type="text" name="cardname" placeholder="Kartenname">
-                    <br>
-                    <h3>Seltenheit:</h3>
-                    <div class="dropdown">
-                        <select  class="btn btn-default btn-lg dropdown-toggle" name="rarity" size="1">
-                            <option>Common</option>
-                            <option>Uncommon</option>
-                            <option>Rare</option>
-                            <option>Mythic</option>
-                        </select>
-                    </div>
+            <div style="width: 450px">
+                <h3>Kartenname</h3>
+                <input class="form-control" type="text" name="cardname" placeholder="Kartenname">
+                <br>
+                <h3>Seltenheit:</h3>
+                <div class="dropdown">
+                    <select  class="btn btn-default btn-lg dropdown-toggle" style="width: 450px" name="rarity" size="1">
+                        <option>Common</option>
+                        <option>Uncommon</option>
+                        <option>Rare</option>
+                        <option>Mythic</option>
+                    </select>
+                </div>
 
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="legendary" value="ja"> Legendär
-                        </label>
-                    </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="legendary" value="ja"> Legendär
+                    </label>
                 </div>
             </div>
 
@@ -115,25 +113,101 @@
             {
                 ?>
 
-                Angriff: <input type="text" name="attack">
+                <h3>Angriff:</h3>
+                <input type="text" name="attack" style="width: 450px">
                 <br>
-                Verteidigung: <input type="text" name="defense">
-                <br>
-                <input type="checkbox" name="staticEffects[]" value="Deathtouch">Deathtouch<br>
-                <input type="checkbox" name="staticEffects[]" value="Defender">Defender<br>
-                <input type="checkbox" name="staticEffects[]" value="Double Strike">Double Strike<br>
-                <input type="checkbox" name="staticEffects[]" value="First Strike">First Strike<br>
-                <input type="checkbox" name="staticEffects[]" value="Flash">Flash<br>
-                <input type="checkbox" name="staticEffects[]" value="Flying">Flying<br>
-                <input type="checkbox" name="staticEffects[]" value="Haste">Haste<br>
-                <input type="checkbox" name="staticEffects[]" value="Hexproof">Hexproof<br>
-                <input type="checkbox" name="staticEffects[]" value="Indestructible">Indestructible<br>
-                <input type="checkbox" name="staticEffects[]" value="Intimidate">Intimidate<br>
-                <input type="checkbox" name="staticEffects[]" value="Lifelink">Lifelink<br>
-                <input type="checkbox" name="staticEffects[]" value="Reach">Reach<br>
-                <input type="checkbox" name="staticEffects[]" value="Shroud">Shroud<br>
-                <input type="checkbox" name="staticEffects[]" value="Trample">Trample<br>
-                <input type="checkbox" name="staticEffects[]" value="Vigilance">Vigilance<br>
+                <h3>Verteidigung:</h3>
+                <input type="text" name="defense" style="width: 450px">
+                <p>
+
+                </p>
+
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Deathtouch">Deathtouch<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Defender">Defender<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Double Strike">Double Strike<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="First Strike">First Strike<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Flash">Flash<br>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Flying">Flying<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Haste">Haste<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Hexproof">Hexproof<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Indestructible">Indestructible<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Intimidate">Intimidate<br>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Lifelink">Lifelink<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Reach">Reach<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Shroud">Shroud<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Trample">Trample<br>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="staticEffects[]" value="Vigilance">Vigilance<br>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
 
             <?php
             }
@@ -142,13 +216,15 @@
             {
                 ?>
 
-                Zaubertyp: <select name="spellType">
+                <h3>Zaubertyp: </h3>
+                <select name="spellType" class="form-control" style="width: 450px">
                 <option>Spontanzauber</option>
                 <option>Verzauberung</option>
                 <option>Hexerei</option>
                 <option>Verzauberung - Aura</option>
                 <option>Artefakt</option>
-            </select>
+                </select>
+                <br>
 
             <?php
             }
@@ -157,7 +233,9 @@
             {
                 ?>
 
-                Lebenspunkte: <input type="text" name="life">
+                <h3>Lebenspunkte: </h3>
+                <input class="form-control" type="text" name="life" style="width: 450px">
+                <br>
 
             <?php
             }
@@ -169,9 +247,8 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <h3>Kartenfähigkeit <?php echo $count; ?> : </h3>
-                        <textarea class="form-control" name="abilities[]" rows="4" placeholder="Fähigkeit"></textarea>
-                        <br/>
-                        <br/>
+                        <textarea class="form-control" name="abilities[]" rows="4" placeholder="Fähigkeit" style="width: 450px"></textarea>
+
                     </div>
                 </div>
 
@@ -179,13 +256,15 @@
             }
             ?>
 
-            <input  class="btn btn-primary" type="submit" name="submit" value="Karte erstellen">
+            <div class="col-xs-12" style="margin-top: 3em">
+                <input  class="btn btn-primary" type="submit" name="submit" value="Karte erstellen">
+            </div>
+
         </form>
     </div>
 </div>
 
 <?php
-
 
 if (isset($_POST["submit"]))
 {

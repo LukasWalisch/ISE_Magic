@@ -29,7 +29,7 @@
                 <h3>Verfügbare Decks:</h3>
                 <br>
                 <div class="dropdown">
-                    <select style="width: 300px" name="selectedDeck">
+                    <select class="btn btn-default btn-lg dropdown-toggle" style="width: 300px" name="selectedDeck">
                     <?php
                         include "PHP_Functions/searchDeck.php";
                         while ($zeile = mysqli_fetch_array($deckFoundQuery, MYSQL_ASSOC))
@@ -49,10 +49,10 @@
                 <h3>Neues Deck hinzufügen</h3>
 
                 <div class="row">
-                    <div class="col-xs-4">
-                        <input type="text" name="deckName" class="form-control" placeholder="Deckname">
+                    <div class="col-xs-5">
+                        <input type="text" name="deckName" class="form-control" placeholder="Deckname" style="width: 300px">
                         <br>
-                        <input type="text" name="description" class="form-control" placeholder="Beschreibung">
+                        <input type="text" name="description" class="form-control" placeholder="Beschreibung" style="width: 300px">
                         <br>
                         <input type="submit" name = "createDeck" value="Erstellen" class="btn btn-primary" >
                     </div>
