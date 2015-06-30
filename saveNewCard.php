@@ -16,6 +16,13 @@
     <title>Neue Karte</title>
 </head>
 <body>
+<?php
+    session_start();
+    if ($_SESSION["username"]=="")
+    {
+        header("Location: index.html");
+    }
+?>
 <?php include_once "header.php"; ?>
 
 <div class="container">
