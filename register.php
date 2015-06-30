@@ -43,7 +43,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Passwort">
                 <br>
 
-                <button class="btn btn-primary" type="submit" value="Registrieren">Registrieren</button>
+                <button class="btn btn-primary" type="submit" name="submit" value="Registrieren">Registrieren</button>
             </form>
         </div>
     </div>
@@ -55,6 +55,53 @@
 <!-- Bootstrap core JavaScript && jquery -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<?php
+
+if (isset($_POST["submit"]))
+{
+    // Create connection
+    $conn = mysqli_connect("localhost", "root", "", "isemagic");
+    // Check connection
+    if (!$conn)
+    {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $postUser = $_POST["username"];
+    $postPassword = $_POST["password"];
+
+    $query = "INSERT INTO User (username, password) VALUES ('$postUser', '$postPassword')";
+    mysqli_query($conn, $query);
+
+    $query = "SELECT card_ID FROM Card WHERE name = 'Rotes Land'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $cardID = $row["card_ID"];
+
+    if (!$cardID)
+    {
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('Rotes Land', 'Common', 'nein', 'Land', '$postUser')";
+        mysqli_query($conn, $query);
+
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('Grünes Land', 'Common', 'nein', 'Land', '$postUser')";
+        mysqli_query($conn, $query);
+
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('Blaues Land', 'Common', 'nein', 'Land', '$postUser')";
+        mysqli_query($conn, $query);
+
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('Weißes Land', 'Common', 'nein', 'Land', '$postUser')";
+        mysqli_query($conn, $query);
+
+        $query = "INSERT INTO Card (name, rarity, legendary, cardtype, username) VALUES ('Schwarzes Land', 'Common', 'nein', 'Land', '$postUser')";
+        mysqli_query($conn, $query);
+    }
+
+    header("Location: login.php");
+
+}
+
+?>
 
 </body>
 </html>

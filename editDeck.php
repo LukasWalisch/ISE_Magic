@@ -27,6 +27,44 @@
     $cardCounter = $_POST["cardCounter"];
     $deckName = $_POST["selectedDeck"];
     if (!$cardCounter) $cardCounter = 0;
+
+    if ( isset ( $_POST["addRedSubmit"]))
+    {
+        $cardCounter += 1;
+        $deckArray[] = "Rotes Land";
+        $searchArray = $_POST["directedSearchArray"];
+    }
+
+    if ( isset ( $_POST["addBlueSubmit"]))
+    {
+        $cardCounter += 1;
+        $deckArray[] = "Blaues Land";
+        $searchArray = $_POST["directedSearchArray"];
+    }
+
+    if ( isset ( $_POST["addGreenSubmit"]))
+    {
+        $cardCounter += 1;
+        $deckArray[] = "Grünes Land";
+        $searchArray = $_POST["directedSearchArray"];
+    }
+
+    if ( isset ( $_POST["addWhiteSubmit"]))
+    {
+        $cardCounter += 1;
+        $deckArray[] = "Weißes Land";
+        $searchArray = $_POST["directedSearchArray"];
+    }
+
+    if ( isset ( $_POST["addBlackSubmit"]))
+    {
+        $cardCounter += 1;
+        $deckArray[] = "Schwarzes Land";
+        $searchArray = $_POST["directedSearchArray"];
+    }
+
+
+
     if ( isset ( $_POST["removeCardSubmit"]))
     {
         $cardCounter = $_POST["cardCounter"];
@@ -245,7 +283,12 @@
                 <!-- BUTTONS -->
 
                 <input class="btn btn-default" type="submit" value=">>" name="addCardSubmit"><br>
-                <input class="btn btn-default" type="submit" value="<<" name="removeCardSubmit">
+                <input class="btn btn-default" type="submit" value="<<" name="removeCardSubmit"><br>
+                <input class="btn btn-default" type="submit" value="Rotes Land" name="addRedSubmit"><br>
+                <input class="btn btn-default" type="submit" value="Blaues Land" name="addBlueSubmit"><br>
+                <input class="btn btn-default" type="submit" value="Schwarzes Land" name="addBlackSubmit"><br>
+                <input class="btn btn-default" type="submit" value="Grünes Land" name="addGreenSubmit"><br>
+                <input class="btn btn-default" type="submit" value="Weißes Land" name="addWhiteSubmit"><br>
 
             </div>
             <div class="col-xs-5 col-md-offset-1">
